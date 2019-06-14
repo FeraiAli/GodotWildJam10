@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameManager="*res://GameManager/GameManager.gd"
+UI="*res://UI/UI.tscn"
 
 [display]
 
