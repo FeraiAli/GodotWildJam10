@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-const SPEED = 120
+var Solution : String = ""
+
+const SPEED = 60
 
 var velocity = Vector2()
 var acceleration = Vector2()

@@ -16,4 +16,6 @@ func _input(event):
 		Glitch("Rabbit")
 	if event.is_action_pressed("ui_page_down"):
 		TrySolution("Rabbit")
-	
+
+func GetPlayer():
+	return get_tree().get_nodes_in_group("Player").front()

@@ -2,13 +2,13 @@ extends Node2D
 
 export(int) var Damage = 10
 
-export(int) var AttackCulminationFrame = 0
+#export(int) var AttackCulminationFrame = 0
 export(int) var MaxDistanceFromHome = 500
 
 export(int) var SightRange = 300
 export(int) var AttackRadius = 100
 
-export(int) var Speed = 70
+export(int) var Speed = 170
 export(float) var AttackSpeed = 1.0
 
 var AttackCounter = 0.0
@@ -53,8 +53,10 @@ func MoveTowardTarget(delta):
 	get_parent().move_and_slide(velocity)
 
 func GetTargetPosition():
-	return get_global_mouse_position()
+	#return get_global_mouse_position()
+	return Target.position
 	
 func OnTreeEntered():
 	#TODO(feri) - Jump
+	Target = GameManager.GetPlayer()
 	get_parent().get_node("ColorRect").modulate = Color(255, 0, 0)
