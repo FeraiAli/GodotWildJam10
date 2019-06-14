@@ -6,7 +6,7 @@ func _ready():
 	add_to_group(Solution)
 	
 	$ColorRect/Label.text = "FIX = " + Solution
-	hide()
+	ToNormal()
 	
 func OnSomeoneEnteredArea(body):
 	if body.is_in_group("Player"):
@@ -14,8 +14,9 @@ func OnSomeoneEnteredArea(body):
 		queue_free()
 
 func ToNormal():
+	$CollisionShape2D.disabled = true
 	hide()
 	
 func ToAnomaly():
-	print("SHOW")
+	$CollisionShape2D.disabled = false
 	show()

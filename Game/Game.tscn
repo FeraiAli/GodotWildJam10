@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Rabbit/Rabbit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game/TheSolutions/Solution.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game/Flower/Flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/PowerUps/PowerUp.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D"]
 
@@ -43,6 +44,7 @@ position = Vector2( 924.194, 346.548 )
 position = Vector2( 979.713, 226.258 )
 
 [node name="Solutions" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="FlowerSolution" parent="Solutions" instance=ExtResource( 4 )]
 position = Vector2( 1165.06, 951.872 )
@@ -68,4 +70,22 @@ position = Vector2( 1012.1, 873.612 )
 
 [node name="Flower5" parent="Flowers" instance=ExtResource( 5 )]
 position = Vector2( 940.866, 802.383 )
+
+[node name="PowerUps" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="PowerUp" parent="PowerUps" instance=ExtResource( 6 )]
+position = Vector2( 479.796, 881.487 )
+
+[node name="PowerUp2" parent="PowerUps" instance=ExtResource( 6 )]
+position = Vector2( 1026.54, 111.581 )
+
+[node name="PowerUp3" parent="PowerUps" instance=ExtResource( 6 )]
+position = Vector2( 159.002, 521.639 )
+
+[node name="PowerUp4" parent="PowerUps" instance=ExtResource( 6 )]
+position = Vector2( 1539.81, 627.641 )
+
+[node name="PowerUp5" parent="PowerUps" instance=ExtResource( 6 )]
+position = Vector2( 75.3168, 80.896 )
 

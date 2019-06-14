@@ -1,12 +1,12 @@
 extends Node
 
+var _Player = null
+
 func Glitch(glitch):
-	for node in get_tree().get_nodes_in_group(glitch):
-		node.ToAnomaly()
+	get_tree().call_group(glitch, "ToAnomaly")
 
 func TrySolution(solution):
-	for node in get_tree().get_nodes_in_group(solution):
-		node.ToNormal()
+	get_tree().call_group(solution, "ToNormal")
 	
 func _input(event):
 	var TestMalfunction = "Rabbit"
@@ -16,4 +16,6 @@ func _input(event):
 		TrySolution(TestMalfunction)
 
 func GetPlayer():
-	return get_tree().get_nodes_in_group("Player").front()
+	if _Player == null:
+		_Player = get_tree().get_nodes_in_group("Player").front()
+	return _Player

@@ -1,15 +1,20 @@
 extends RichTextLabel
 
-var dialog = ["This developer made me a happy little land bla bla.",
-	"I see so many glitches , cant this guy make anything right.",
-	"I need to do something or else I will be killed!"]
+const INTRO_DIALOG = ["This developer made me a happy little land. Full of flowers and cute rabbits, I am so happy to be here. I am the happiest AI ever lived!"]
+
+const DANGER_DIALOG = ["Something went wrong, this guy can't make anything right. Everyting is so glitchy in this world.",
+					   "Rabbits gone crazy it's must be a some kind of bug. I have to find a fix or i might loose everything."]
+					
+const FINAL_DIALOG = [""]
+	
+var dialog = INTRO_DIALOG
+
 var page = 0
 var skippedDialog = false
 
 func _ready():
 	set_bbcode(dialog[page])
 	set_visible_characters(0)
-
 
 func _input(event):
 	if event.is_action_pressed("skip_dialog"):
