@@ -16,7 +16,11 @@ _global_script_class_icons={
 [application]
 
 config/name="GodotWildJam10"
+<<<<<<< Updated upstream
 run/main_scene="res://Game/Game.tscn"
+=======
+run/main_scene="res://World/World.tscn"
+>>>>>>> Stashed changes
 config/icon="res://icon.png"
 
 [autoload]
