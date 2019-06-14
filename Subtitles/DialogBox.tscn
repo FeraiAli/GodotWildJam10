@@ -3,7 +3,7 @@
 [ext_resource path="res://Subtitles/Dialog.gd" type="Script" id=1]
 
 [node name="DialogBox" type="Polygon2D"]
-color = Color( 0.0313726, 0.027451, 0.0901961, 1 )
+color = Color( 0.0313726, 0.027451, 0.0901961, 0.235294 )
 polygon = PoolVector2Array( 192, 576, 192, 688, 1088, 688, 1088, 576 )
 
 [node name="Dialog" type="RichTextLabel" parent="."]

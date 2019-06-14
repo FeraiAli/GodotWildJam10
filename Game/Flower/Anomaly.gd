@@ -10,4 +10,4 @@ func _process(delta):
 	pass
 
 func OnTreeEntered():
-	pass # Replace with function body.
+	get_parent().get_node("ColorRect").modulate = Color(255, 0, 0)

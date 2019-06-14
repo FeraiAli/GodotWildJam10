@@ -1,21 +1,19 @@
 extends Node
 
-signal ToNormal
-signal ToAnomaly
-	
 func Glitch(glitch):
 	for node in get_tree().get_nodes_in_group(glitch):
-		emit_signal("ToAnomaly")
+		node.ToAnomaly()
 
 func TrySolution(solution):
 	for node in get_tree().get_nodes_in_group(solution):
-		emit_signal("ToNormal")
+		node.ToNormal()
 	
 func _input(event):
+	var TestMalfunction = "Rabbit"
 	if event.is_action_pressed("ui_page_up"):
-		Glitch("Rabbit")
+		Glitch(TestMalfunction)
 	if event.is_action_pressed("ui_page_down"):
-		TrySolution("Rabbit")
+		TrySolution(TestMalfunction)
 
 func GetPlayer():
 	return get_tree().get_nodes_in_group("Player").front()

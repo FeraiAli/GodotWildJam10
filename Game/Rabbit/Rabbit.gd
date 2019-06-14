@@ -7,18 +7,16 @@ var Normal = NORMAL_BEHAVIOR.instance()
 var Anomaly = ANOMALY_BEHAVIOR.instance()
 
 func _ready():
-	GameManager.connect("ToNormal", self, "ConvertToNormal")
-	GameManager.connect("ToAnomaly", self, "ConvertToAnomaly")
 	add_child(Normal)
 
 func _process(delta):
 	pass
 	#print(position)
 	
-func ConvertToNormal():
+func ToNormal():
 	remove_child(Anomaly)
 	add_child(Normal)
 	
-func ConvertToAnomaly():
+func ToAnomaly():
 	remove_child(Normal)
 	add_child(Anomaly)

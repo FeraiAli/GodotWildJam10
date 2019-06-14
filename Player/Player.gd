@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var Solution : String = ""
+export(int) var Health = 100
 
 const SPEED = 60
 
