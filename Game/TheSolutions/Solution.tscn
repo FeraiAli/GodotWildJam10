@@ -26,3 +26,4 @@ text = "FIX BUG"
 align = 1
 valign = 1
 
+[connection signal="body_entered" from="." to="." method="OnSomeoneEnteredArea"]

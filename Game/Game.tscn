@@ -8,25 +8,36 @@
 [node name="Game" type="Node2D"]
 
 [node name="Rabbit" parent="." instance=ExtResource( 1 )]
-position = Vector2( 716.146, 189.05 )
+position = Vector2( 768.742, 229.959 )
 
 [node name="Rabbit2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 849.798, 278.014 )
+position = Vector2( 894.602, 200.093 )
 
 [node name="Rabbit3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 718.853, 385.968 )
+position = Vector2( 769.502, 319.735 )
 
 [node name="Rabbit4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 992.325, 246.381 )
+position = Vector2( 1021.55, 213.265 )
 
 [node name="Rabbit5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 944.064, 379.214 )
+position = Vector2( 986.92, 408.434 )
+
+[node name="Rabbit6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 879.779, 394.798 )
+
+[node name="Rabbit7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1010.3, 328.566 )
+
+[node name="Rabbit8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 901.208, 299.345 )
 
 [node name="TheHouse" parent="." instance=ExtResource( 2 )]
 position = Vector2( 325.268, 207.854 )
 
 [node name="Solution" parent="." instance=ExtResource( 3 )]
-position = Vector2( 31.928, 621.625 )
+position = Vector2( 44.8788, 641.051 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 539.499, 384.888 )
+scale = Vector2( 0.5, 0.5 )
 
