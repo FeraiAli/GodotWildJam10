@@ -1,91 +1,97 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Game/Rabbit/Rabbit.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Game/TheSolutions/Solution.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Game/Flower/Flower.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Game/PowerUps/PowerUp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Procedural/ProceduralMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game/Rabbit/Rabbit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game/TheSolutions/Solution.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/Flower/Flower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Game/PowerUps/PowerUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node2D"]
 
-[node name="TheHouse" parent="." instance=ExtResource( 1 )]
-position = Vector2( 325.268, 207.854 )
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="TheHouse" parent="." instance=ExtResource( 2 )]
+position = Vector2( 430.461, 110.453 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 539.499, 384.888 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Rabits" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Rabbit" parent="Rabits" instance=ExtResource( 3 )]
+[node name="Rabbit" parent="Rabits" instance=ExtResource( 4 )]
 position = Vector2( 746.535, 220.706 )
 
-[node name="Rabbit2" parent="Rabits" instance=ExtResource( 3 )]
-position = Vector2( 927.895, 152.233 )
+[node name="Rabbit2" parent="Rabits" instance=ExtResource( 4 )]
+position = Vector2( 894.779, 140.545 )
 
-[node name="Rabbit3" parent="Rabits" instance=ExtResource( 3 )]
-position = Vector2( 996.368, 294.731 )
+[node name="Rabbit3" parent="Rabits" instance=ExtResource( 4 )]
+position = Vector2( 980.784, 296.679 )
 
-[node name="Rabbit4" parent="Rabits" instance=ExtResource( 3 )]
+[node name="Rabbit4" parent="Rabits" instance=ExtResource( 4 )]
 position = Vector2( 874.227, 278.075 )
 
-[node name="Rabbit5" parent="Rabits" instance=ExtResource( 3 )]
+[node name="Rabbit5" parent="Rabits" instance=ExtResource( 4 )]
 position = Vector2( 785.398, 313.237 )
 
-[node name="Rabbit6" parent="Rabits" instance=ExtResource( 3 )]
+[node name="Rabbit6" parent="Rabits" instance=ExtResource( 4 )]
 position = Vector2( 852.02, 205.901 )
 
-[node name="Rabbit7" parent="Rabits" instance=ExtResource( 3 )]
+[node name="Rabbit7" parent="Rabits" instance=ExtResource( 4 )]
 position = Vector2( 924.194, 346.548 )
 
-[node name="Rabbit8" parent="Rabits" instance=ExtResource( 3 )]
+[node name="Rabbit8" parent="Rabits" instance=ExtResource( 4 )]
 position = Vector2( 979.713, 226.258 )
 
 [node name="Solutions" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="FlowerSolution" parent="Solutions" instance=ExtResource( 4 )]
-position = Vector2( 1165.06, 951.872 )
+[node name="FlowerSolution" parent="Solutions" instance=ExtResource( 5 )]
+position = Vector2( 1145.02, 823.268 )
 Solution = "Flower"
 
-[node name="RabbitSolution" parent="Solutions" instance=ExtResource( 4 )]
-position = Vector2( 44.8788, 641.051 )
+[node name="RabbitSolution" parent="Solutions" instance=ExtResource( 5 )]
+position = Vector2( 181.24, 644.947 )
 
 [node name="Flowers" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Flower" parent="Flowers" instance=ExtResource( 5 )]
+[node name="Flower" parent="Flowers" instance=ExtResource( 6 )]
 position = Vector2( 906.33, 877.929 )
 
-[node name="Flower2" parent="Flowers" instance=ExtResource( 5 )]
+[node name="Flower2" parent="Flowers" instance=ExtResource( 6 )]
 position = Vector2( 964.609, 925.416 )
 
-[node name="Flower3" parent="Flowers" instance=ExtResource( 5 )]
+[node name="Flower3" parent="Flowers" instance=ExtResource( 6 )]
 position = Vector2( 865.319, 873.612 )
 
-[node name="Flower4" parent="Flowers" instance=ExtResource( 5 )]
+[node name="Flower4" parent="Flowers" instance=ExtResource( 6 )]
 position = Vector2( 1012.1, 873.612 )
 
-[node name="Flower5" parent="Flowers" instance=ExtResource( 5 )]
-position = Vector2( 940.866, 802.383 )
+[node name="Flower5" parent="Flowers" instance=ExtResource( 6 )]
+position = Vector2( 935.855, 987.773 )
 
 [node name="PowerUps" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="PowerUp" parent="PowerUps" instance=ExtResource( 6 )]
+[node name="PowerUp" parent="PowerUps" instance=ExtResource( 7 )]
 position = Vector2( 479.796, 881.487 )
 
-[node name="PowerUp2" parent="PowerUps" instance=ExtResource( 6 )]
+[node name="PowerUp2" parent="PowerUps" instance=ExtResource( 7 )]
 position = Vector2( 1026.54, 111.581 )
 
-[node name="PowerUp3" parent="PowerUps" instance=ExtResource( 6 )]
+[node name="PowerUp3" parent="PowerUps" instance=ExtResource( 7 )]
 position = Vector2( 159.002, 521.639 )
 
-[node name="PowerUp4" parent="PowerUps" instance=ExtResource( 6 )]
-position = Vector2( 1539.81, 627.641 )
+[node name="PowerUp4" parent="PowerUps" instance=ExtResource( 7 )]
+position = Vector2( 1506.41, 620.96 )
 
-[node name="PowerUp5" parent="PowerUps" instance=ExtResource( 6 )]
-position = Vector2( 75.3168, 80.896 )
+[node name="PowerUp5" parent="PowerUps" instance=ExtResource( 7 )]
+position = Vector2( 178.562, 84.8894 )
+
+[node name="PlayerUI" parent="." instance=ExtResource( 8 )]
 

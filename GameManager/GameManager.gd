@@ -1,4 +1,8 @@
 extends Node
+#TILES WAYS - LEFT - (0, 10-15)
+#RIGHT - (39, 10-15)
+#UP - (20-25, 0)
+#DOWN - (20-25, 23)
 
 var _Player = null
 

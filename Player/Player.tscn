@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Sprites/Character/body.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 70 )
+extents = Vector2( 32, 32 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -16,11 +16,15 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -65 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -70 )
+position = Vector2( -2.10529, -23.6842 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+limit_left = 0
+limit_top = 0
+limit_right = 2560
+limit_bottom = 1536
 smoothing_enabled = true
 smoothing_speed = 100.0
 
