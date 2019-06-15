@@ -8,7 +8,7 @@ func _ready():
 	pass # Replace with function body
 	
 func ToNormal():
-	$ColorRect.modulate = Color(255, 255, 255)
+	$ColorRect.modulate = Color(0, 255, 255)
 	remove_child(Anomaly)
 	#TODO(feri) - Play Idle
 	
