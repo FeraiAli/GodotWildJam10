@@ -26,4 +26,5 @@ valign = 1
 [node name="Shape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
+disabled = true
 

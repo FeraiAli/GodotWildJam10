@@ -35,6 +35,7 @@ func _physics_process(delta):
 		Stamina = min(MaxStamina, Stamina + 0.1)
 		
 	velocity += acceleration
+	$Body.flip_h = velocity.x < 0
 	velocity = move_and_slide(velocity)
 	velocity *= 0.8
 	
