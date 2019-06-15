@@ -39,3 +39,4 @@ func _physics_process(delta):
 	velocity *= 0.8
 	
 	acceleration = Vector2()
+	$Anim.play("RUN")

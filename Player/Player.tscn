@@ -1,11 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Character/body.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Character/player.png" type="Texture" id=2]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "IDLE"
+
+[sub_resource type="Animation" id=3]
+resource_name = "RUN"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4 ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -16,7 +36,7 @@ script = ExtResource( 1 )
 modulate = Color( 0.0588235, 0.490196, 0.905882, 1 )
 texture = ExtResource( 2 )
 centered = false
-region_enabled = true
+hframes = 5
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -34,4 +54,9 @@ smoothing_enabled = true
 smoothing_speed = 100.0
 
 [node name="PlayerUI" parent="." instance=ExtResource( 3 )]
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/IDLE = SubResource( 2 )
+anims/RUN = SubResource( 3 )
 
