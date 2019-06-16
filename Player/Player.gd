@@ -18,6 +18,12 @@ func AddBonus(bonus):
 		MaxStamina += 10
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_select"):
+		if $Camera2D.zoom == Vector2(0.5, 0.5):
+			$Camera2D.zoom = Vector2(2.0, 2.0)
+		else:
+			$Camera2D.zoom = Vector2(0.5, 0.5)
+		
 	if Input.is_action_pressed("ui_right"):
 		acceleration.x += Speed
 	elif Input.is_action_pressed("ui_left"):

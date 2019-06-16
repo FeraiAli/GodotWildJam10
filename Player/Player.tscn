@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Character/player.png" type="Texture" id=2]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -44,18 +43,14 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.6, 0.6 )
+zoom = Vector2( 2, 2 )
 limit_left = 0
 limit_top = 0
 limit_right = 2560
 limit_bottom = 1536
-smoothing_enabled = true
-smoothing_speed = 100.0
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
 anims/IDLE = SubResource( 2 )
 anims/RUN = SubResource( 3 )
-
-[node name="PlayerUI" parent="." instance=ExtResource( 3 )]
 

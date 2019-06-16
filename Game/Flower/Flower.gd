@@ -5,7 +5,7 @@ const ANOMALY_BEHAVIOR = preload("res://Game/Flower/Anomaly.tscn")
 var Anomaly = ANOMALY_BEHAVIOR.instance()
 
 func _ready():
-	pass # Replace with function body
+	$Anim.play("IDLE")
 	
 func _process(delta):
 	pass
