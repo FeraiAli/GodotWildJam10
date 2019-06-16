@@ -6,17 +6,17 @@ func _ready():
 	add_to_group(Solution)
 	
 	$ColorRect/Label.text = "FIX = " + Solution
-	ToNormal()
+	ChangeToNormal()
 	
 func OnSomeoneEnteredArea(body):
 	if body.is_in_group("Player"):
 		GameManager.GetPlayer().Solution = Solution
 		queue_free()
 
-func ToNormal():
+func ChangeToNormal():
 	$CollisionShape2D.disabled = true
 	hide()
 	
-func ToAnomaly():
+func ChangeToGlitch():
 	$CollisionShape2D.disabled = false
 	show()

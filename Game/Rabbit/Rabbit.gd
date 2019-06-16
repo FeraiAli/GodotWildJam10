@@ -9,10 +9,10 @@ var Anomaly = ANOMALY_BEHAVIOR.instance()
 func _ready():
 	add_child(Normal)
 
-func ToNormal():
+func ChangeToNormal():
 	remove_child(Anomaly)
 	add_child(Normal)
 	
-func ToAnomaly():
+func ChangeToGlitch():
 	remove_child(Normal)
 	add_child(Anomaly)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/happy_outdoors.png-1583d33e61a410e69d7fab2d7b6b67fd.stex"
+path="res://.import/HappyTileSet.png-b18c936051b081a22751e3b40bff0c2c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tileset/happy_outdoors.png"
-dest_files=[ "res://.import/happy_outdoors.png-1583d33e61a410e69d7fab2d7b6b67fd.stex" ]
+source_file="res://Assets/Tileset/HappyTileSet.png"
+dest_files=[ "res://.import/HappyTileSet.png-b18c936051b081a22751e3b40bff0c2c.stex" ]
 
 [params]
 

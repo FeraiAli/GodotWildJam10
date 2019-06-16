@@ -29,7 +29,6 @@ func _process(delta):
 func OnTreeEntered():
 	SafePoint = get_parent().position
 	TargetPoint = get_parent().position
-	get_parent().get_node("ColorRect").modulate = Color(255, 255, 255)
 	
 	#TODO(feri) - IDLE
 	StartJump()

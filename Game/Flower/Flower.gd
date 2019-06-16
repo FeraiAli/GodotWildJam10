@@ -5,6 +5,8 @@ const ANOMALY_BEHAVIOR = preload("res://Game/Flower/Anomaly.tscn")
 var Anomaly = ANOMALY_BEHAVIOR.instance()
 
 func _ready():
+	randomize()
+	$Anim.playback_speed = randf() * 3
 	$Anim.play("IDLE")
 	
 func _process(delta):
@@ -15,6 +17,6 @@ func ToNormal():
 	remove_child(Anomaly)
 	#TODO(feri) - Play Idle
 	
-func ToAnomaly():
+func ChangeToGlitch():
 	#TODO(feri) - Stop Idle
 	add_child(Anomaly)

@@ -59,4 +59,3 @@ func GetTargetPosition():
 func OnTreeEntered():
 	#TODO(feri) - Jump
 	Target = GameManager.GetPlayer()
-	get_parent().get_node("ColorRect").modulate = Color(255, 0, 0)

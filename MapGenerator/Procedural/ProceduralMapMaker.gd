@@ -7,26 +7,24 @@ const HEIGHT = (OS.window_size.y * 2) / TILE_SIZE
 var SimplexNoise = OpenSimplexNoise.new()
 
 func _ready():
+	GameManager.connect("GameGenerateWorld", self, "GenerateWorld") 
 	randomize()
-	SimplexNoise.seed = randi()
 	SimplexNoise.octaves = 4
 	SimplexNoise.period = 15
 	SimplexNoise.lacunarity = 1.5
 	SimplexNoise.persistence = 0.75
 	GenerateWorld()
 
-func _input(event):
-	if event.is_action_pressed("ui_select"):
-		SimplexNoise.seed = randi()
-		GenerateWorld()
-	elif event.is_action_pressed("ui_accept"):
-		print("Saving Procedural Map Begin.")
-		var packedScene = PackedScene.new()
-		packedScene.pack($TileMap)
-		ResourceSaver.save("res://Maps/Procedural/ProceduralMap.tscn", packedScene)
-		print("Successfully Saved Procedural Map.")
-	
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		print("Saving Procedural Map Begin.")
+#		var packedScene = PackedScene.new()
+#		packedScene.pack($TileMap)
+#		ResourceSaver.save("res://Maps/Procedural/ProceduralMap.tscn", packedScene)
+#		print("Successfully Saved Procedural Map.")
+
 func GenerateWorld():
+	SimplexNoise.seed = randi()
 	print("Generating Random Map Begin.")
 	for x in WIDTH:
 		for y in HEIGHT:
