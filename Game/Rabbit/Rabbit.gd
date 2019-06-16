@@ -10,7 +10,8 @@ func _ready():
 	add_child(Normal)
 
 func _process(delta):
-	pass
+	#CHANGE tHIS PART SO IDLE_NORMAL IS STANDING STILL, JUMP_NORMAL IS MOVING AROUND AND JUMP_GLITCH IS CHASING THE PLAYER
+	$Anim.play("JUMP_NORMAL")
 	#print(position)
 	
 func ToNormal():

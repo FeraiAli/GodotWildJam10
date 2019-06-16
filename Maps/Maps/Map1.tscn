@@ -15,7 +15,6 @@
 position = Vector2( 1886.43, 923.476 )
 
 [node name="Rabbits" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Flcok" type="Node2D" parent="Rabbits"]
 editor/display_folded = true
@@ -39,7 +38,6 @@ position = Vector2( 1472.19, 589.885 )
 position = Vector2( 1659.63, 610.095 )
 
 [node name="Flcok2" type="Node2D" parent="Rabbits"]
-editor/display_folded = true
 position = Vector2( -1190.6, 739.949 )
 __meta__ = {
 "_edit_group_": true
@@ -114,7 +112,6 @@ position = Vector2( 1472.19, 589.885 )
 position = Vector2( 1659.63, 610.095 )
 
 [node name="Flowers" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Garden" type="Node2D" parent="Flowers"]
 position = Vector2( 35.2455, 40.2805 )
