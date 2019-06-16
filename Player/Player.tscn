@@ -30,6 +30,7 @@ tracks/0/keys = {
 "Player",
 ]]
 script = ExtResource( 1 )
+Speed = 40
 
 [node name="Body" type="Sprite" parent="."]
 texture = ExtResource( 2 )
