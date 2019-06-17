@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-const SPEED = 250
+const SPEED = 200
 #const DAMAGE
 
 var Target = null
@@ -24,6 +24,9 @@ func _process(delta):
 	else:
 		var velocity = SPEED * Direction.normalized()
 		position += velocity * delta
+		
+	if get_parent().position.distance_to(position) > 800.0:
+		queue_free()
 	
 func Init(target):
 	position = get_parent().global_position
