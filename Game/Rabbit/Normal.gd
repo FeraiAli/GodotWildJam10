@@ -1,7 +1,7 @@
 extends Node
 
 var SafePoint = Vector2()
-var SafeDistance = 200
+var SafeDistance = 10000
 var JumpDistance = 100
 
 var JumpTime = 0.5
@@ -24,10 +24,11 @@ func _process(delta):
 	
 	if time == 1.0: 
 		set_process(false)
+		get_parent().get_node("Anim").play("IDLE_NORMAL")
 		#TODO(feri) - IDLE
 	
 func OnTreeEntered():
-	get_parent().get_node("Anim").play("IDLE_NORMAl")
+	get_parent().get_node("Anim").play("IDLE_NORMAL")
 	SafePoint = get_parent().position
 	TargetPoint = get_parent().position
 	
@@ -36,6 +37,7 @@ func OnTreeEntered():
 
 func StartJump():
 	var direction = Vector2()
+	get_parent().get_node("Anim").play("JUMP_NORMAL")
 	
 	if TargetPoint.distance_to(SafePoint) > SafeDistance:
 		direction = SafePoint - TargetPoint

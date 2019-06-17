@@ -8,9 +8,10 @@ var Anomaly = ANOMALY_BEHAVIOR.instance()
 
 func _ready():
 	randomize()
-	$TimeBeforeGlitch.wait_time = randi() % 120 + 20
+	$TimeBeforeGlitch.wait_time = 1 #randi() % 120 + 20
 	$TimeBeforeGlitch.connect("timeout", self, "ChangeToGlitch")
 	$TimeBeforeGlitch.start()
+	
 	add_child(Normal)
 
 func ChangeToNormal():

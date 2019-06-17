@@ -10,4 +10,4 @@ func _process(delta):
 	pass
 
 func OnTreeEntered():
-	get_parent().get_node("ColorRect").modulate = Color(255, 0, 0)
+	get_parent().get_node("Anim").play("GLITCH")

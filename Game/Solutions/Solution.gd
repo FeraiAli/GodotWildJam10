@@ -9,7 +9,8 @@ func _ready():
 	ChangeToNormal()
 	
 func ChangeToNormal():
-	$CollisionShape2D.disabled = true
+	pass
+#	$CollisionShape2D.disabled = true
 	#hide()
 	
 func ChangeToGlitch():

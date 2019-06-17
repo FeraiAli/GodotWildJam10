@@ -2,9 +2,6 @@
 
 [ext_resource path="res://Assets/Tileset/BasicTileSet.png" type="Texture" id=1]
 
-
-
-
 [sub_resource type="TileSet" id=1]
 0/name = "Land"
 0/texture = ExtResource( 1 )

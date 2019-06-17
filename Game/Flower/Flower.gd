@@ -6,17 +6,19 @@ var Anomaly = ANOMALY_BEHAVIOR.instance()
 
 func _ready():
 	randomize()
-	$Anim.playback_speed = randf() * 3
+	$Anim.playback_speed = randf() * 2 + 0.5
 	$Anim.play("IDLE")
+	$TimeBeforeGlitch.wait_time = 1 #randi() % 120 + 20
+	$TimeBeforeGlitch.connect("timeout", self, "ChangeToGlitch")
+	$TimeBeforeGlitch.start()
 	
 func _process(delta):
 	pass
 	
-func ToNormal():
-	$ColorRect.modulate = Color(0, 255, 255)
+func ChangeToNormal():
 	remove_child(Anomaly)
-	#TODO(feri) - Play Idle
-	
+	$Anim.play("IDLE")
+
 func ChangeToGlitch():
-	#TODO(feri) - Stop Idle
-	add_child(Anomaly)
+	if false == GameManager.HasSolution("Flower"):
+		add_child(Anomaly)
