@@ -5,7 +5,4 @@
 [node name="Normal" type="Node"]
 script = ExtResource( 1 )
 
-[node name="JumpDelay" type="Timer" parent="."]
-
 [connection signal="tree_entered" from="." to="." method="OnTreeEntered"]
-[connection signal="timeout" from="JumpDelay" to="." method="StartJump"]

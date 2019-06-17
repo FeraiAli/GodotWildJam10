@@ -1,56 +1,39 @@
 extends Node
 
-var SafePoint = Vector2()
-var SafeDistance = 10000
-var JumpDistance = 100
+var Speed = 150
+var Acceleration = Vector2()
+var Velocity = Vector2()
 
-var JumpTime = 0.5
-var JumpTimeCounter = 0.0
-
-var TargetPoint = Vector2()
+var JumpCounter = 0.0
+var JumpDelay = 1
 
 func _ready():
 	randomize()
-	$JumpDelay.wait_time = (randf() * 3) + 2
-	set_process(false)
-
+	get_parent().get_node("Anim").playback_speed = 2
+	JumpDelay = randf() * 3 + 1
+	
 func _process(delta):
-	JumpTimeCounter = min(JumpTimeCounter + delta, JumpTime)
+	JumpCounter += delta
 	
-	var time = range_lerp(JumpTimeCounter, 0.0, JumpTime, 0.0, 1.0)
-	var nextPosition = get_parent().position.linear_interpolate(TargetPoint, time)
-	var velocity = nextPosition - get_parent().position
-	get_parent().move_and_slide(velocity)
-	
-	if time == 1.0: 
-		set_process(false)
-		get_parent().get_node("Anim").play("IDLE_NORMAL")
-		#TODO(feri) - IDLE
-	
-func OnTreeEntered():
-	get_parent().get_node("Anim").play("IDLE_NORMAL")
-	SafePoint = get_parent().position
-	TargetPoint = get_parent().position
-	
-	#TODO(feri) - IDLE
-	StartJump()
-
-func StartJump():
-	var direction = Vector2()
-	get_parent().get_node("Anim").play("JUMP_NORMAL")
-	
-	if TargetPoint.distance_to(SafePoint) > SafeDistance:
-		direction = SafePoint - TargetPoint
-	else:
+	if get_parent().position.distance_to(GameManager.GetPlayer().position) < 150:
+		Acceleration += (get_parent().position - GameManager.GetPlayer().position).normalized()
+	elif JumpCounter > JumpDelay:
+		JumpCounter = 0.0
 		var degree = randi() % 360
 		var radian = deg2rad(degree)
-		direction = Vector2(cos(radian), sin(radian))
+		var direction = Vector2(cos(radian), sin(radian))
+		Acceleration += direction.normalized()
+
+	Velocity += (Acceleration * Speed)
+	Acceleration = Vector2()
+	Velocity = Velocity.clamped(Speed)
 	
-	TargetPoint += direction.normalized() * JumpDistance
+	if Velocity == Vector2():
+		get_parent().get_node("Anim").play("IDLE_NORMAL")
+	else:
+		get_parent().position += Velocity * delta
+		get_parent().get_node("Anim").play("JUMP_NORMAL")
 	
-	JumpTimeCounter = 0.0
-	$JumpDelay.start()
-	
-	set_process(true)
-	#TODO(feri) - JUMP
-	
+	Velocity *= 0.8
+	if Velocity.x < 1.0 and Velocity.y < 1.0:
+		Velocity = Vector2()

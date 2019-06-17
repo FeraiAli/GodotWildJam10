@@ -10,7 +10,7 @@ func _ready():
 	randomize()
 	$TimeBeforeGlitch.wait_time = 1 #randi() % 120 + 20
 	$TimeBeforeGlitch.connect("timeout", self, "ChangeToGlitch")
-	$TimeBeforeGlitch.start()
+	#$TimeBeforeGlitch.start()
 	
 	add_child(Normal)
 

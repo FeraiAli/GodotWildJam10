@@ -42,7 +42,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "JUMP_NORMAL"
-length = 1.25
+length = 1.1
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -52,10 +52,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
+"values": [ 1, 2, 3, 4 ]
 }
 
 [node name="Rabbit" type="KinematicBody2D" groups=[
@@ -73,6 +73,7 @@ shape = SubResource( 1 )
 position = Vector2( -1, 0 )
 texture = ExtResource( 2 )
 hframes = 10
+frame = 4
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/IDLE_NORMAL = SubResource( 2 )

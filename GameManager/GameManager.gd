@@ -22,24 +22,24 @@ func _input(event):
 	if event.is_action_pressed("game_camera_zoom_out"):
 		emit_signal("CameraZoomOut")
 		
-#	if event.is_action_pressed("game_glitch_rabbits"):
-#		AlternateMalfunction("Rabbit")
-#	if event.is_action_pressed("game_glitch_flowers"):
-#		AlternateMalfunction("Flower")
+	if event.is_action_pressed("game_glitch_rabbits"):
+		AlternateMalfunction("Rabbit")
+	if event.is_action_pressed("game_glitch_flowers"):
+		AlternateMalfunction("Flower")
 
-#func AlternateMalfunction(groupId):
-#	if _Malfunctions.has(groupId):
-#		TrySolution(groupId)
-#	else:
-#		CreateGlitch(groupId)
-		
-#func CreateGlitch(groupId):
-#	_Malfunctions.push_back(groupId)
-#	get_tree().call_group(groupId, "ChangeToGlitch")
+func AlternateMalfunction(groupId):
+	if _Malfunctions.has(groupId):
+		TrySolution(groupId)
+	else:
+		CreateGlitch(groupId)
+
+func CreateGlitch(groupId):
+	_Malfunctions.push_back(groupId)
+	get_tree().call_group(groupId, "ChangeToGlitch")
 
 func TrySolution(groupId):
-#	_Malfunctions.erase(groupId)
-	FindSolutions.push_back(groupId)
+	_Malfunctions.erase(groupId)
+	#FindSolutions.push_back(groupId)
 	get_tree().call_group(groupId, "ChangeToNormal")
 	
 func GetPlayer():
