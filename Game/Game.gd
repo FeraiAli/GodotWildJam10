@@ -5,6 +5,7 @@ export(int) var FlowerCount = 120
 
 const RABBIT = preload("res://Game/Rabbit/Rabbit.tscn")
 const FLOWER = preload("res://Game/Flower/Flower.tscn")
+const SOLUTION = preload("res://Game/Solutions/Solution.tscn")
 
 var _TilSize
 func _ready():
@@ -13,6 +14,8 @@ func _ready():
 	_TilSize = GetTileMapSize()
 	CreateObject(RABBIT, RabbitsCount)
 	CreateObject(FLOWER, FlowerCount)
+	CreateSolution("Rabbit")
+	CreateSolution("Flower")
 
 func RepositionObjects():
 	for child in $Scene.get_children():
@@ -23,9 +26,15 @@ func RepositionObjects():
 		$Scene.add_child(child)
 
 func GetRandomPosition():
-	var x = ((randi() % (int(_TilSize.size.x) - 100))) + 100
-	var y = ((randi() % (int(_TilSize.size.y) - 100))) + 100
+	var x = ((randi() % (int(_TilSize.size.x) - 150))) + 150
+	var y = ((randi() % (int(_TilSize.size.y) - 150))) + 150
 	return Vector2(x, y)
+
+func CreateSolution(solutionName):
+	var s = SOLUTION.instance()
+	s.Solution = solutionName
+	s.position = GetRandomPosition()
+	$Scene.add_child(s)
 	
 func CreateObject(objectCreator, count):
 	for i in range(0, count):

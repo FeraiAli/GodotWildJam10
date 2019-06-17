@@ -7,6 +7,10 @@ var Normal = NORMAL_BEHAVIOR.instance()
 var Anomaly = ANOMALY_BEHAVIOR.instance()
 
 func _ready():
+	randomize()
+	$TimeBeforeGlitch.wait_time = randi() % 120 + 20
+	$TimeBeforeGlitch.connect("timeout", self, "ChangeToGlitch")
+	$TimeBeforeGlitch.start()
 	add_child(Normal)
 
 func ChangeToNormal():
@@ -14,5 +18,6 @@ func ChangeToNormal():
 	add_child(Normal)
 	
 func ChangeToGlitch():
-	remove_child(Normal)
-	add_child(Anomaly)
+	if false == GameManager.HasSolution("Rabbit"):
+		remove_child(Normal)
+		add_child(Anomaly)

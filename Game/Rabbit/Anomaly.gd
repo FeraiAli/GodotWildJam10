@@ -57,5 +57,6 @@ func GetTargetPosition():
 	return Target.position
 	
 func OnTreeEntered():
+	get_parent().get_node("Anim").play("JUMP_GLITCH")
 	#TODO(feri) - Jump
 	Target = GameManager.GetPlayer()

@@ -2,10 +2,8 @@
 
 [ext_resource path="res://Game/Solutions/Solution.gd" type="Script" id=1]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80, 30 )
+extents = Vector2( 82.8997, 30 )
 
 [node name="Solution" type="Area2D" groups=[
 "Solution",
@@ -28,4 +26,4 @@ text = "FIX BUG"
 align = 1
 valign = 1
 
-[connection signal="body_entered" from="." to="." method="OnSomeoneEnteredArea"]
+[connection signal="body_entered" from="." to="." method="OnSomeoneEntered"]

@@ -27,6 +27,7 @@ func _process(delta):
 		#TODO(feri) - IDLE
 	
 func OnTreeEntered():
+	get_parent().get_node("Anim").play("IDLE_NORMAl")
 	SafePoint = get_parent().position
 	TargetPoint = get_parent().position
 	

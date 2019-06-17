@@ -78,3 +78,5 @@ anims/IDLE_NORMAL = SubResource( 2 )
 anims/JUMP_GLITCH = SubResource( 3 )
 anims/JUMP_NORMAL = SubResource( 4 )
 
+[node name="TimeBeforeGlitch" type="Timer" parent="."]
+
