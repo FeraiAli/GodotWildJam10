@@ -5,4 +5,3 @@
 [node name="Normal" type="Node"]
 script = ExtResource( 1 )
 
-[connection signal="tree_entered" from="." to="." method="OnTreeEntered"]
