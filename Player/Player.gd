@@ -38,13 +38,6 @@ func _physics_process(delta):
 		acceleration.y -= Speed
 	elif Input.is_action_pressed("ui_down"):
 		acceleration.y += Speed
-	
-#	if Input.is_action_pressed("ui_bonus_speed"):
-#		if acceleration != Vector2() and Stamina > 0:
-#			Stamina = max(0, Stamina - 1)
-#			acceleration *= 2
-#	else:
-#		Stamina = min(MaxStamina, Stamina + 0.1)
 		
 	velocity += acceleration
 	$Body.flip_h = velocity.x < 0
