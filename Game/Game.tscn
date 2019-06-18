@@ -7,8 +7,8 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
-RabbitsCount = 300
-FlowerCount = 0
+RabbitsCount = 50
+FlowerCount = 50
 
 [node name="ProceduralMapMaker" parent="." instance=ExtResource( 2 )]
 
