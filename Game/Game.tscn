@@ -6,9 +6,10 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 1 )
 RabbitsCount = 50
-FlowerCount = 50
+FlowerCount = 15
 
 [node name="ProceduralMapMaker" parent="." instance=ExtResource( 2 )]
 
