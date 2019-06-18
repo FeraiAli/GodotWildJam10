@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Sprites/glitchobjects/rabbit_strip.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.74786, 5.04054 )
+extents = Vector2( 5, 5 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "IDLE_NORMAL"
