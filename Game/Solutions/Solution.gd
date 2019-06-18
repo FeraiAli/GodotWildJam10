@@ -7,6 +7,9 @@ func _ready():
 	
 	$ColorRect/Label.text = "FIX = " + Solution
 	ChangeToNormal()
+
+func _process(delta):
+	$Anim.play("ANIM")
 	
 func ChangeToNormal():
 	pass
