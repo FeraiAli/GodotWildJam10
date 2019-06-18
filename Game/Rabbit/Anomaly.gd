@@ -56,12 +56,10 @@ func MoveTowardTarget(delta):
 	get_parent().move_and_slide(velocity)
 
 func GetTargetPosition():
-	#return get_global_mouse_position()
 	return Target.position
 	
 func OnTreeEntered():
 	get_parent().get_node("Anim").play("JUMP_GLITCH")
 	get_parent().get_node("Anim").playback_speed = 3
 	get_parent().get_node("Anim").playback_speed = randf() * 2 + 1
-	#TODO(feri) - Jump
 	Target = GameManager.GetPlayer()

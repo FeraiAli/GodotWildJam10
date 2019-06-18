@@ -82,3 +82,10 @@ anims/JUMP_NORMAL = SubResource( 4 )
 
 [node name="TimeBeforeGlitch" type="Timer" parent="."]
 
+[node name="Debug" type="Label" parent="."]
+margin_left = -21.4056
+margin_top = -36.2105
+margin_right = 18.5944
+margin_bottom = -9.21047
+align = 1
+
