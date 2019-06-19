@@ -18,8 +18,7 @@ func _process(delta):
 	var dist = TargetPos.distance_to(self.global_position)
 	if dist < 10.0:
 		if Target != null:
-			print("HIT")
-#			target.Hurt(damage)
+			GameManager.emit_signal("RequestGlitchingTile")
 		queue_free()
 	else:
 		var velocity = SPEED * Direction.normalized()

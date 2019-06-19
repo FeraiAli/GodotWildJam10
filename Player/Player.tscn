@@ -4,9 +4,9 @@
 [ext_resource path="res://Assets/Sprites/Character/player.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 2, 2 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "DASH"
 length = 0.25
 tracks/0/type = "value"
@@ -22,8 +22,7 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "IDLE"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -37,8 +36,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "REPAIRING"
+[sub_resource type="Animation" id=4]
 length = 0.75
 loop = true
 step = 0.25
@@ -55,7 +53,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 7 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -78,13 +76,14 @@ script = ExtResource( 1 )
 Speed = 40
 
 [node name="Body" type="Sprite" parent="."]
+position = Vector2( 14.0696, -25.6922 )
 texture = ExtResource( 2 )
 hframes = 9
 frame = 8
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.70921, 8.71809 )
+position = Vector2( 13.3948, -4.23148 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -97,8 +96,8 @@ limit_bottom = 1536
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/DASH = SubResource( 5 )
-anims/IDLE = SubResource( 2 )
-anims/REPAIRING = SubResource( 3 )
-anims/RUN = SubResource( 4 )
+anims/DASH = SubResource( 2 )
+anims/IDLE = SubResource( 3 )
+anims/REPAIRING = SubResource( 4 )
+anims/RUN = SubResource( 5 )
 

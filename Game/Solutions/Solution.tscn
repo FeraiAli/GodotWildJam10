@@ -33,20 +33,6 @@ visible = false
 position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -64.0
-margin_top = -48.0
-margin_right = 56.0
-margin_bottom = -28.0
-
-[node name="Label" type="Label" parent="ColorRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "FIX BUG"
-align = 1
-valign = 1
-
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/ANIM = SubResource( 2 )
 

@@ -24,7 +24,6 @@ func _process(delta):
 	BehaviorChangerTimer += delta
 	
 	if IsNormalBehavior:
-		$Debug.text = str(round(NormalDuration - BehaviorChangerTimer)) + "sec"
 		if BehaviorChangerTimer > NormalDuration:
 			BehaviorChangerTimer -= NormalDuration
 			if GameManager.GetPlayer().position.distance_to(position) < SightRange:
@@ -32,11 +31,8 @@ func _process(delta):
 				if shouldGlitch:
 					ChangeToGlitch()
 	else:
-		$Debug.text = str(round(GlitchDuration - BehaviorChangerTimer)) + "sec"
 		if BehaviorChangerTimer > GlitchDuration:
 			ChangeToNormal()
-	
-	$Debug.text += "\n" + "%" + str(GlitchHappenChance)
 	
 func ChangeToNormal():
 	remove_child(Anomaly)

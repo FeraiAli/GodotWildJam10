@@ -66,12 +66,13 @@ collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="Shape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 0 )
+position = Vector2( 8.24305, -8.65311 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1, 0 )
+position = Vector2( -7.1172, -28.343 )
 texture = ExtResource( 2 )
+centered = false
 hframes = 10
 frame = 4
 
@@ -81,11 +82,4 @@ anims/JUMP_GLITCH = SubResource( 3 )
 anims/JUMP_NORMAL = SubResource( 4 )
 
 [node name="TimeBeforeGlitch" type="Timer" parent="."]
-
-[node name="Debug" type="Label" parent="."]
-margin_left = -21.4056
-margin_top = -36.2105
-margin_right = 18.5944
-margin_bottom = -9.21047
-align = 1
 

@@ -35,22 +35,13 @@ func CanAttack():
 	return AttackCounter >= AttackSpeed
 	
 func Attack():
-	#print("Attack")
-	#set_process(false)
 	AttackCounter = 0.0
-	pass
-	#play("attack")
 
 func Wait():
-	#print("Wait")
 	pass
-	#play("idle")
 
 func MoveTowardTarget(delta):
-	#print("Walk")
-	#play("walk")
 	var direction = GetTargetPosition() - get_parent().position
-	#flip_h = (direction.x < 0)
 
 	var velocity = (direction.normalized() * Speed)
 	get_parent().move_and_slide(velocity)

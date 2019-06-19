@@ -5,6 +5,7 @@ signal GameGenerateWorld
 signal CameraZoomIn
 signal CameraZoomOut
 
+signal RequestGlitchingTile
 signal OnGameStarted
 signal OnFirstGlitchHappen
 signal OnGameWin

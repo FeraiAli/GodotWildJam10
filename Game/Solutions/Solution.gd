@@ -4,8 +4,6 @@ export(String, "Rabbit", "Flower", "Water") var Solution = "Rabbit"
 
 func _ready():
 	add_to_group(Solution)
-	
-	$ColorRect/Label.text = "FIX = " + Solution
 	ChangeToNormal()
 
 func _process(delta):
