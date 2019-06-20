@@ -36,6 +36,7 @@ func CanAttack():
 	
 func Attack():
 	AttackCounter = 0.0
+	GameManager.emit_signal("RequestGlitchingTile")
 
 func Wait():
 	pass

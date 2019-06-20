@@ -1,50 +1,157 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Subtitles/DialogBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/UITheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Sprites/Icons/under_progress_repair.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Icons/progress_repair.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Icons/under_progress_dash.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Icons/progress_dash.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.392157, 0.0117647, 0.0117647, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.545098, 0.878431, 0.0470588, 1 )
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="DialogBox" parent="." instance=ExtResource( 2 )]
+[node name="Intro" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 80 )
 
-[node name="Health" type="ColorRect" parent="."]
-margin_right = 200.0
-margin_bottom = 50.0
-color = Color( 0.0392157, 0.929412, 0.427451, 1 )
+[node name="OnDanger" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 80 )
 
-[node name="Label" type="Label" parent="Health"]
+[node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = -1.36041
+margin_right = -1.36035
+theme = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="Control"]
+margin_left = 10.0
+margin_top = 680.0
+margin_right = 180.0
+margin_bottom = 760.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Repair" type="TextureProgress" parent="Control/Panel/HBoxContainer"]
+margin_right = 83.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+max_value = 2.0
+step = 0.01
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="Dash" type="TextureProgress" parent="Control/Panel/HBoxContainer"]
+margin_left = 87.0
+margin_right = 170.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_horizontal = 3
+max_value = 2.0
+step = 0.01
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+editor/display_folded = true
+anchor_right = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = -5.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Points" type="Label" parent="Control/HBoxContainer"]
+margin_right = 405.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 1 )
+text = "POINTS : 0"
 align = 1
 valign = 1
 
-[node name="Stamina" type="ColorRect" parent="."]
-margin_left = 200.0
-margin_right = 400.0
-margin_bottom = 50.0
-color = Color( 0.819608, 0.392157, 0.0784314, 1 )
-
-[node name="Label" type="Label" parent="Stamina"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+[node name="SurvivalTime" type="Label" parent="Control/HBoxContainer"]
+margin_left = 410.0
+margin_right = 815.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 1 )
+text = "SURVIVAL TIME : 0sec"
 align = 1
 valign = 1
 
-[node name="Info" type="ColorRect" parent="."]
-margin_left = 400.0
-margin_right = 700.0
-margin_bottom = 50.0
-
-[node name="Label" type="Label" parent="Info"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Press Shift To Use Stamina
-It Doubles Your Speed."
+[node name="WorldGlitchPercentage" type="Label" parent="Control/HBoxContainer"]
+margin_left = 820.0
+margin_right = 1225.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 1 )
+text = "WORLD GLITCH 0%"
 align = 1
 valign = 1
 
+[node name="MoreOptions" type="Button" parent="Control/HBoxContainer"]
+margin_left = 1230.0
+margin_right = 1270.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 0 )
+text = "..."
+
+[node name="GameMenu" type="CenterContainer" parent="Control"]
+pause_mode = 2
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+
+[node name="VBox" type="VBoxContainer" parent="Control/GameMenu"]
+margin_left = 592.0
+margin_top = 324.0
+margin_right = 688.0
+margin_bottom = 394.0
+
+[node name="Restart" type="Button" parent="Control/GameMenu/VBox"]
+margin_right = 96.0
+margin_bottom = 33.0
+text = "RESTART"
+
+[node name="BackToMenu" type="Button" parent="Control/GameMenu/VBox"]
+margin_top = 37.0
+margin_right = 96.0
+margin_bottom = 70.0
+text = "MENU"
+
+[node name="HighScore" type="CenterContainer" parent="Control/GameMenu/VBox"]
+visible = false
+margin_top = 74.0
+margin_right = 96.0
+margin_bottom = 101.0
+
+[node name="Label" type="Label" parent="Control/GameMenu/VBox/HighScore"]
+margin_right = 95.0
+margin_bottom = 27.0
+text = "SCORE 10"
+
+[connection signal="pressed" from="Control/HBoxContainer/MoreOptions" to="." method="OnMoreOptionsPressed"]
+[connection signal="pressed" from="Control/GameMenu/VBox/Restart" to="." method="OnRestartPressed"]
+[connection signal="pressed" from="Control/GameMenu/VBox/BackToMenu" to="." method="OnBackToMenuPressed"]

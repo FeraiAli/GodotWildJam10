@@ -2,18 +2,21 @@ extends AnimatedSprite
 
 const SPEED = 200
 #const DAMAGE
-
-var Target = null
 var TargetPos
+var Target = null
 var Direction
 
 func _ready():
+	GameManager.connect("GameGenerateWorld", self, "SelfDestroy")
 	play("idle")
+
+func SelfDestroy():
+	set_process(false)
+	queue_free()
 	
 func _process(delta):
-	
 	if null != Target:
-		TargetPos = Target.global_position
+		TargetPos = Target.get_node("Position2D").global_position
 		
 	var dist = TargetPos.distance_to(self.global_position)
 	if dist < 10.0:
@@ -28,9 +31,8 @@ func _process(delta):
 		queue_free()
 	
 func Init(target):
-	position = get_parent().global_position
+	position = get_parent().get_node("Position2D").global_position
 	var weakRefTarget = weakref(target)
 	Target = weakRefTarget.get_ref()
-	Direction = Target.global_position - self.global_position
-	rotation = global_position.angle_to_point(Target.global_position) + 1.6
-	
+	Direction = Target.get_node("Position2D").global_position - self.global_position
+	rotation = global_position.angle_to_point(Target.get_node("Position2D").global_position) + 1.6

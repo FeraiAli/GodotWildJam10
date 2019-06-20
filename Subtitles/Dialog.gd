@@ -1,13 +1,13 @@
 extends RichTextLabel
 
-const INTRO_DIALOG = ["This developer made me a happy little land. Full of flowers and cute rabbits, I am so happy to be here. I am the happiest AI ever lived!"]
+const DIALOGS = {"Intro": ["This developer made me a happy little land. Full of flowers and cute rabbits, I am so happy to be here. I am the happiest AI ever lived!"],
+					  "Danger":["Something went wrong, this guy can't make anything right. Everyting is so glitchy in this world.",
+					   "Rabbits gone crazy it's must be a some kind of bug. I have to find a fix or i might loose everything."]}
 
-const DANGER_DIALOG = ["Something went wrong, this guy can't make anything right. Everyting is so glitchy in this world.",
-					   "Rabbits gone crazy it's must be a some kind of bug. I have to find a fix or i might loose everything."]
 					
-const FINAL_DIALOG = [""]
+export(String, "Intro", "Danger") var DialogType = "Intro"
 	
-var dialog = INTRO_DIALOG
+var dialog = DIALOGS.get(DialogType)
 
 var page = 0
 var skippedDialog = false

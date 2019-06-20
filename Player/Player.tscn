@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Character/player.png" type="Texture" id=2]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/Icons/casting_bgr.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Icons/casting_fill.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "DASH"
-length = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -16,10 +18,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8 ]
+"values": [ 8, 8, 8, 8, 8 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -37,8 +39,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 0.75
-loop = true
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
@@ -101,3 +101,21 @@ anims/IDLE = SubResource( 3 )
 anims/REPAIRING = SubResource( 4 )
 anims/RUN = SubResource( 5 )
 
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 17.1235, -17.3614 )
+
+[node name="PlayerUI" parent="." instance=ExtResource( 3 )]
+
+[node name="RepairCasting" type="TextureProgress" parent="."]
+visible = false
+margin_left = -3.91179
+margin_top = -41.4999
+margin_right = 31.0882
+margin_bottom = -38.4999
+max_value = 0.6
+step = 0.01
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+nine_patch_stretch = true
+
+[connection signal="animation_finished" from="Anim" to="." method="OnAnimFinished"]

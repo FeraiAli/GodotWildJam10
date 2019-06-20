@@ -3,9 +3,9 @@
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://MapGenerator/Procedural/MapMaker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MapGenerator/Procedural/GroudMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://MapGenerator/Procedural/ForestMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MapGenerator/Procedural/ForestMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,14 +14,15 @@ script = ExtResource( 1 )
 
 [node name="GroundMap" parent="." instance=ExtResource( 3 )]
 
+[node name="GlitchTiles" type="YSort" parent="."]
+
 [node name="Scene" type="YSort" parent="."]
-editor/display_folded = true
 
-[node name="Player" parent="Scene" instance=ExtResource( 4 )]
-position = Vector2( 682.138, 388.537 )
+[node name="ForestMap" parent="." instance=ExtResource( 4 )]
 
-[node name="ForestMap" parent="." instance=ExtResource( 5 )]
+[node name="TheHouse" parent="." instance=ExtResource( 5 )]
+position = Vector2( 38.6702, 29.3292 )
 
-[node name="TheHouse" parent="." instance=ExtResource( 6 )]
-position = Vector2( 511.603, 337.553 )
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 73.5122, 154.855 )
 

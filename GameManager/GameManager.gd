@@ -6,15 +6,13 @@ signal CameraZoomIn
 signal CameraZoomOut
 
 signal RequestGlitchingTile
-signal OnGameStarted
-signal OnFirstGlitchHappen
-signal OnGameWin
 
-var _GlitchTimer = 5.0
+signal OnRepeairBegin
+signal OnObjectFixed
+signal ObjectIsGlitching
+
 var _Malfunctions = []
 
-var FindSolutions = []
-	
 func _input(event):
 	if event.is_action_pressed("game_generate_world"):
 		emit_signal("GameGenerateWorld")
@@ -48,5 +46,9 @@ func GetPlayer():
 		_Player = get_tree().get_nodes_in_group("Player").front()
 	return _Player
 	
-func HasSolution(groupID):
-	return FindSolutions.has(groupID)
+func OnGameOver():
+	get_tree().paused = true
+	
+func RestartTheGame():
+	get_tree().paused = false
+	emit_signal("GameGenerateWorld")

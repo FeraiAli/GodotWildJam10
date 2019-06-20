@@ -9,16 +9,22 @@ const SOLUTION = preload("res://Game/Solutions/Solution.tscn")
 const GLITCHED_TILE = preload("res://Game/GlitchedTile/GlitchedTile.tscn")
 
 func _ready():
+	$Player.get_node("PlayerUI").TotalObjects = RabbitsCount + FlowerCount
 	GameManager.connect("RequestGlitchingTile", self, "GlitchTile")
-	GameManager.connect("GameGenerateWorld", self, "RepositionObjects")
+	GameManager.connect("GameGenerateWorld", self, "Restart")
 	randomize()
 	
 	CreateObject(RABBIT, RabbitsCount)
 	CreateObject(FLOWER, FlowerCount)
-	CreateSolution("Rabbit")
-	CreateSolution("Flower")
+	$TheHouse.position = Vector2(30, 35)
+	$Player.position = Vector2(50, 150)
 
-func RepositionObjects():
+func Restart():
+	$TheHouse.position = Vector2(30, 35)
+	$Player.position = Vector2(50, 150)
+	for child in $GlitchTiles.get_children():
+		child.queue_free()
+	
 	for child in $Scene.get_children():
 		if child == $Scene/Player:
 			continue
@@ -27,15 +33,9 @@ func RepositionObjects():
 		$Scene.add_child(child)
 
 func GetRandomPosition():
-	var x = ((randi() % (int($MapMaker.GetTileMapSize().x) - 100))) + 100
-	var y = ((randi() % (int($MapMaker.GetTileMapSize().y) - 100))) + 100
+	var x = ((randi() % (int($MapMaker.GetTileMapSize().x) - 100))) + 160
+	var y = ((randi() % (int($MapMaker.GetTileMapSize().y) - 100))) + 160
 	return Vector2(x, y)
-
-func CreateSolution(solutionName):
-	var s = SOLUTION.instance()
-	s.Solution = solutionName
-	s.position = GetRandomPosition()
-	$Scene.add_child(s)
 	
 func CreateObject(objectCreator, count):
 	for i in range(0, count):
@@ -46,4 +46,6 @@ func CreateObject(objectCreator, count):
 func GlitchTile():
 	var tile = GLITCHED_TILE.instance()
 	tile.position = GetRandomPosition()
-	$Scene.add_child(tile)
+	$GlitchTiles.add_child(tile)
+	$Player.get_node("PlayerUI").OnTileGlitched()
+	

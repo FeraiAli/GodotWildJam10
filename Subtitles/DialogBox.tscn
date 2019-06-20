@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Subtitles/Dialog.gd" type="Script" id=1]
+[ext_resource path="res://UI/UITheme.tres" type="Theme" id=1]
+[ext_resource path="res://Subtitles/Dialog.gd" type="Script" id=2]
 
 [node name="DialogBox" type="Polygon2D"]
 color = Color( 0.0313726, 0.027451, 0.0901961, 0.235294 )
@@ -11,8 +12,9 @@ margin_left = 224.0
 margin_top = 592.0
 margin_right = 1056.0
 margin_bottom = 672.0
+theme = ExtResource( 1 )
 text = "This is test mode"
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="VisibleCharacters" type="Timer" parent="Dialog"]
 wait_time = 0.05

@@ -11,8 +11,6 @@ func _process(delta):
 	
 func ChangeToNormal():
 	pass
-#	$CollisionShape2D.disabled = true
-	#hide()
 	
 func ChangeToGlitch():
 	$CollisionShape2D.disabled = false

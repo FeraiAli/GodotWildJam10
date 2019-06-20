@@ -5,7 +5,6 @@ const WIDTH = (OS.window_size.x * 2) / TILE_SIZE
 const HEIGHT = (OS.window_size.y * 2) / TILE_SIZE
 
 var SimplexNoise = OpenSimplexNoise.new()
-
 var _TileMapSize
 
 func _ready():
@@ -34,6 +33,7 @@ func GenerateWorld():
 	
 	forestMap.clear()
 	SimplexNoise.seed = randi()
+
 	for x in WIDTH:
 		for y in HEIGHT:
 			var noiseSample = SimplexNoise.get_noise_2d(float(x), float(y))
@@ -49,6 +49,11 @@ func GenerateWorld():
 				elif treeChange > 0.75: treeId = 2
 				forestMap.set_cell(x,y, treeId)
 				
+	for x in range(0, 5):
+		for y in range(0, 5):
+			forestMap.set_cell(x,y,-1)
+			tileMap.set_cell(x,y,0)
+	
 	tileMap.update_bitmask_region()
 	forestMap.update_bitmask_region()
 	
