@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends Sprite
 
 const SPEED = 200
 #const DAMAGE
@@ -8,7 +8,7 @@ var Direction
 
 func _ready():
 	GameManager.connect("GameGenerateWorld", self, "SelfDestroy")
-	play("idle")
+	#play("idle")
 
 func SelfDestroy():
 	set_process(false)
