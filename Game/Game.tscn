@@ -27,5 +27,7 @@ position = Vector2( 38.6702, 29.3292 )
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 73.5122, 154.855 )
 
+[node name="FlyingObjects" type="YSort" parent="."]
+
 [node name="PointsManager" parent="." instance=ExtResource( 7 )]
 

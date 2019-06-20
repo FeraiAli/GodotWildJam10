@@ -3,8 +3,9 @@ extends Node2D
 var Normal = null
 var Anomaly = null
 	
-var NormalDuration = 20.0
+var NormalDuration = 10.0
 var GlitchHappenChance = 0.0
+var GlitchIncreaseFactor = 0.05
 
 var BehaviorChangerTimer = 0.0
 
@@ -34,7 +35,7 @@ func _process(delta):
 		
 	if BehaviorChangerTimer > NormalDuration:
 		BehaviorChangerTimer -= NormalDuration
-		GlitchHappenChance = min(1, GlitchHappenChance + 0.1)
+		GlitchHappenChance = min(1, GlitchHappenChance + GlitchIncreaseFactor)
 		if randf() < GlitchHappenChance:
 			ChangeToGlitch()
 	

@@ -12,6 +12,7 @@ export(int) var Speed = 170
 export(float) var AttackSpeed = 1.0
 
 var AttackCounter = 0.0
+var AttackDelayCounter = 0.0
 var Target = null
 
 func _ready():
@@ -22,7 +23,9 @@ func _process(delta):
 	
 	if IsInAttackRange():
 		if CanAttack():
-			Attack()
+			AttackDelayCounter += delta
+			if AttackDelayCounter >= 0.3:
+				Attack()
 		else:
 			Wait()
 	else:
@@ -35,6 +38,7 @@ func CanAttack():
 	return AttackCounter >= AttackSpeed
 	
 func Attack():
+	AttackDelayCounter = 0.0
 	AttackCounter = 0.0
 	GameManager.emit_signal("RequestGlitchingTile")
 

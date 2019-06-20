@@ -7,3 +7,4 @@ func Init():
 	$Anim.playback_speed = randf() * 2 + 0.5
 	Normal = NORMAL_BEHAVIOR.instance()
 	Anomaly = ANOMALY_BEHAVIOR.instance()
+	GlitchHappenChance = 0.1

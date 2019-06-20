@@ -25,6 +25,8 @@ func _input(event):
 		AlternateMalfunction("Rabbit")
 	if event.is_action_pressed("game_glitch_flowers"):
 		AlternateMalfunction("Flower")
+	if event.is_action_pressed("game_glitch_bee"):
+		AlternateMalfunction("Bee")
 
 func AlternateMalfunction(groupId):
 	if _Malfunctions.has(groupId):
