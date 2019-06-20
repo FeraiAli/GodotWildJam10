@@ -26,6 +26,7 @@ position = Vector2( 0, 80 )
 position = Vector2( 0, 80 )
 
 [node name="Control" type="Control" parent="."]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.36041
@@ -39,6 +40,7 @@ margin_right = 180.0
 margin_bottom = 760.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -67,7 +69,6 @@ fill_mode = 3
 nine_patch_stretch = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 5.0
 margin_top = 2.0
@@ -87,25 +88,25 @@ text = "POINTS : 0"
 align = 1
 valign = 1
 
-[node name="SurvivalTime" type="Label" parent="Control/HBoxContainer"]
+[node name="WorldGlitchPercentage" type="Label" parent="Control/HBoxContainer"]
 margin_left = 410.0
 margin_right = 815.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
 custom_styles/normal = SubResource( 1 )
-text = "SURVIVAL TIME : 0sec"
+text = "WORLD GLITCH 0%"
 align = 1
 valign = 1
 
-[node name="WorldGlitchPercentage" type="Label" parent="Control/HBoxContainer"]
+[node name="SurvivalTime" type="Label" parent="Control/HBoxContainer"]
 margin_left = 820.0
 margin_right = 1225.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
 custom_styles/normal = SubResource( 1 )
-text = "WORLD GLITCH 0%"
+text = "SURVIVAL TIME : 0sec"
 align = 1
 valign = 1
 
@@ -117,8 +118,6 @@ rect_min_size = Vector2( 40, 0 )
 text = "..."
 
 [node name="GameMenu" type="CenterContainer" parent="Control"]
-pause_mode = 2
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -126,9 +125,9 @@ margin_top = 50.0
 
 [node name="VBox" type="VBoxContainer" parent="Control/GameMenu"]
 margin_left = 592.0
-margin_top = 324.0
+margin_top = 342.0
 margin_right = 688.0
-margin_bottom = 394.0
+margin_bottom = 375.0
 
 [node name="Restart" type="Button" parent="Control/GameMenu/VBox"]
 margin_right = 96.0
@@ -136,6 +135,7 @@ margin_bottom = 33.0
 text = "RESTART"
 
 [node name="BackToMenu" type="Button" parent="Control/GameMenu/VBox"]
+visible = false
 margin_top = 37.0
 margin_right = 96.0
 margin_bottom = 70.0

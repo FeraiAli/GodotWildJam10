@@ -16,9 +16,12 @@ var RepairTimerCounter = 10.0
 var DashTimerCounter = 10.0
 
 func _ready():
+	GameManager.connect("GameGenerateWorld", self, "Restart")
 	GameManager.connect("CameraZoomIn", self, "CameraZoomIn")
 	GameManager.connect("CameraZoomOut", self, "CameraZoomOut")
 	$Anim.connect("animation_finished", self, "OnAnimationFinished")
+	
+	Restart()
 	
 func CameraZoomIn():
 	$Camera2D.zoom.x = max(0.1, $Camera2D.zoom.x - 0.1)
@@ -94,5 +97,11 @@ func OnAnimFinished(animName):
 				
 		for r in get_tree().get_nodes_in_group("GlitchTile"):
 			if r.global_position.distance_to($Position2D.global_position) < FixingArea:
-				GameManager.emit_signal("OnObjectFixed", 10)
+				GameManager.emit_signal("OnObjectFixed", r.global_position, 150)
 				r.queue_free()
+
+func Restart():
+	RepairTimerCounter = 10.0
+	DashTimerCounter = 10.0
+	$Anim.play("IDLE")
+	$RepairCasting.hide()

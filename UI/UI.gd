@@ -5,7 +5,7 @@ var GlitchedTiles = 0
 var GlitchedObjects = 0
 var TotalObjects = 0
 var RepairUsedTimes = 0
-var TimeSinceStart = OS.get_ticks_msec()
+var TimeSinceStart = 0
 
 func _ready():
 	GameManager.connect("OnRepeairBegin", self, "OnRepairUsed")
@@ -13,14 +13,15 @@ func _ready():
 	GameManager.connect("ObjectIsGlitching", self, "OnObjectGlitched")
 	
 func _process(delta):
-	$Control/HBoxContainer/SurvivalTime.text = "SURVIVAL TIME: " + str(PassedTime()) + " seconds"
+	TimeSinceStart += delta
+	$Control/HBoxContainer/SurvivalTime.text = "SURVIVAL TIME: " + str(round(TimeSinceStart)) + " seconds"
 	$Control/Panel/HBoxContainer/Repair.value = get_parent().RepairTimerCounter
 	$Control/Panel/HBoxContainer/Dash.value = get_parent().DashTimerCounter
 
 func OnRepairUsed():
 	RepairUsedTimes += 1
 	
-func OnPointGained(point):
+func OnPointGained(pos, point):
 	GlitchedObjects = max(0, GlitchedObjects - 1)
 	Points += point
 	$Control/HBoxContainer/Points.text = "POINTS: " + str(Points)
@@ -34,16 +35,13 @@ func OnObjectGlitched():
 func OnTileGlitched():
 	GlitchedTiles += 1
 	$Control/HBoxContainer/WorldGlitchPercentage.text = "WORLD GLITCH " + GetGlitchPercent() + "%"
-
-func PassedTime():
-	return round((OS.get_ticks_msec() - TimeSinceStart) / 1000)
 	
 func GetGlitchPercent():
-	var objects = range_lerp(GlitchedObjects, 0, TotalObjects, 0, 50)
+	var objects = range_lerp(GlitchedObjects, 0, TotalObjects, 0, 25)
 	var result = min(100, objects + GlitchedTiles) as int
 	if result == 100:
-		var score = max(0, Points - (RepairUsedTimes * 2))
-		score += PassedTime()
+		var score = max(0, Points - (RepairUsedTimes * 25))
+		score += round(TimeSinceStart * 10)
 		$Control/GameMenu/VBox/HighScore/Label.text = "TOTAL SCORE: " + str(score)
 		$Control/GameMenu.show()
 		$Control/GameMenu/VBox/HighScore.show()
@@ -55,12 +53,14 @@ func GetGlitchPercent():
 func OnMoreOptionsPressed():
 	if $Control/GameMenu.is_visible_in_tree():
 		$Control/GameMenu.hide()
+		get_tree().paused = false
 	else:
 		$Control/GameMenu.show()
+		get_tree().paused = true
 
 func OnRestartPressed():
 	GameManager.RestartTheGame()
-	TimeSinceStart = OS.get_ticks_msec()
+	TimeSinceStart = 0
 	Points = 0
 	GlitchedTiles = 0
 	GlitchedObjects = 0

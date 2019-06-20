@@ -3,7 +3,7 @@ extends Node2D
 var Normal = null
 var Anomaly = null
 	
-var NormalDuration = 10.0
+var NormalDuration = 20.0
 var GlitchHappenChance = 0.0
 
 var BehaviorChangerTimer = 0.0
@@ -40,7 +40,7 @@ func _process(delta):
 	
 func ChangeToNormal():
 	if false == IsNormalBehavior:
-		GameManager.emit_signal("OnObjectFixed", 5)
+		GameManager.emit_signal("OnObjectFixed", global_position, 50)
 		Restart()
 	
 func ChangeToGlitch():
