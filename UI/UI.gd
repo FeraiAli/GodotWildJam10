@@ -46,7 +46,7 @@ func GetGlitchPercent():
 		$Control/GameMenu.show()
 		$Control/GameMenu/VBox/HighScore.show()
 		$Control/HBoxContainer/MoreOptions.disabled = true
-		GameManager.OnGameOver()
+		GameManager.OnGameOver(score)
 		
 	return str(result)
 

@@ -11,6 +11,11 @@ const SOLUTION = preload("res://Game/Solutions/Solution.tscn")
 const GLITCHED_TILE = preload("res://Game/GlitchedTile/GlitchedTile.tscn")
 
 func _ready():
+	if false == GameManager.Config.empty():
+		BeesCount = GameManager.Config.BeesCount
+		RabbitsCount = GameManager.Config.RabbitsCount
+		FlowerCount = GameManager.Config.FlowerCount
+	
 	$Player.get_node("PlayerUI").TotalObjects = RabbitsCount + FlowerCount
 	GameManager.connect("RequestGlitchingTile", self, "GlitchTile")
 	GameManager.connect("GameGenerateWorld", self, "Restart")

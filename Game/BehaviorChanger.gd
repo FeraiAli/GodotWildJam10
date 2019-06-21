@@ -15,6 +15,11 @@ func Init():
 	pass
 	
 func _ready():
+	if false == GameManager.Config.empty():
+		NormalDuration = GameManager.Config.NormalDuration
+		GlitchHappenChance = GameManager.Config.GlitchHappenChance
+		GlitchIncreaseFactor = GameManager.Config.GlitchIncreaseFactor
+		
 	GameManager.connect("GameGenerateWorld", self, "Restart")
 	Init()
 	randomize()
@@ -41,7 +46,9 @@ func _process(delta):
 	
 func ChangeToNormal():
 	if false == IsNormalBehavior:
-		GameManager.emit_signal("OnObjectFixed", global_position, 50)
+		var point = 50
+		if false == GameManager.Config.empty(): point *= GameManager.Config.PointMultiplier
+		GameManager.emit_signal("OnObjectFixed", global_position, point)
 		Restart()
 	
 func ChangeToGlitch():
