@@ -68,7 +68,6 @@ fill_mode = 3
 nine_patch_stretch = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 5.0
 margin_top = 2.0
@@ -118,7 +117,6 @@ rect_min_size = Vector2( 40, 0 )
 text = "..."
 
 [node name="GameMenu" type="CenterContainer" parent="Control"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -136,11 +134,10 @@ margin_bottom = 33.0
 text = "RESTART"
 
 [node name="BackToMenu" type="Button" parent="Control/GameMenu/VBox"]
-visible = false
 margin_top = 37.0
 margin_right = 96.0
 margin_bottom = 70.0
-text = "MENU"
+text = "QUIT"
 
 [node name="HighScore" type="CenterContainer" parent="Control/GameMenu/VBox"]
 visible = false

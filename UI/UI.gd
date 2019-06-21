@@ -71,5 +71,4 @@ func OnRestartPressed():
 	$Control/HBoxContainer/WorldGlitchPercentage.text = "WORLD GLITCH " + GetGlitchPercent() + "%"
 
 func OnBackToMenuPressed():
-	print("BACK TO MAIN MENU")
-	pass # Replace with function body.
+	get_tree().quit()
