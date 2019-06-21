@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://MapGenerator/Procedural/MapMaker.tscn" type="PackedScene" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://MapGenerator/Procedural/ForestMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Game/PointsManager/PointsManager.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Game/ScreenShake/ScreenShake.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Game/PointsManager/PointsManager.tscn" type="PackedScene" id=9]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -32,5 +33,7 @@ position = Vector2( 73.5122, 154.855 )
 
 [node name="FlyingObjects" type="YSort" parent="."]
 
-[node name="PointsManager" parent="." instance=ExtResource( 8 )]
+[node name="ScreenShake" parent="." instance=ExtResource( 8 )]
+
+[node name="PointsManager" parent="." instance=ExtResource( 9 )]
 

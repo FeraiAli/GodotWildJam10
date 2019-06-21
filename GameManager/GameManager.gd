@@ -12,6 +12,8 @@ signal OnRepeairBegin
 signal OnObjectFixed
 signal ObjectIsGlitching
 
+signal ScreenShake
+
 var _Malfunctions = []
 
 func _input(event):
