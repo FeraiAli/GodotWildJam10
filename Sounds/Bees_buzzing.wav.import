@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bees_buzzing.wav-b6d7066fe406f5f28c11b29e9b53a0c4.sample"
+
+[deps]
+
+source_file="res://Sounds/Bees_buzzing.wav"
+dest_files=[ "res://.import/Bees_buzzing.wav-b6d7066fe406f5f28c11b29e9b53a0c4.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

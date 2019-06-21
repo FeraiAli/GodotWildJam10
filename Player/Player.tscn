@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Character/shadow_new.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/Icons/casting_bgr.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/Icons/casting_fill.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/player_footsteps.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
@@ -69,6 +70,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 1, 2, 3, 4 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player_audio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -85,6 +98,7 @@ texture = ExtResource( 2 )
 position = Vector2( 14.0696, -25.6922 )
 texture = ExtResource( 3 )
 hframes = 9
+frame = 3
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -122,5 +136,10 @@ step = 0.01
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
+
+[node name="Player_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.733
+mix_target = 2
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimFinished"]
