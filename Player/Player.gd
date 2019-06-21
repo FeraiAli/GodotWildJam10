@@ -16,6 +16,10 @@ var RepairTimerCounter = 10.0
 var DashTimerCounter = 10.0
 
 func _ready():
+	if false == GameManager.Config.empty():
+		Speed = GameManager.Config.PlayerSpeed
+		FixingArea = GameManager.Config.FixingArea
+
 	GameManager.connect("GameGenerateWorld", self, "Restart")
 	GameManager.connect("CameraZoomIn", self, "CameraZoomIn")
 	GameManager.connect("CameraZoomOut", self, "CameraZoomOut")
@@ -54,7 +58,7 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_down"):
 		acceleration.y += Speed
 	
-	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 2.0:
+	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 0.0:
 		RepairTimerCounter = 0.0
 		GameManager.emit_signal("OnRepeairBegin")
 		$Anim.play("REPAIRING")
@@ -97,7 +101,10 @@ func OnAnimFinished(animName):
 				
 		for r in get_tree().get_nodes_in_group("GlitchTile"):
 			if r.global_position.distance_to($Position2D.global_position) < FixingArea:
-				GameManager.emit_signal("OnObjectFixed", r.global_position, 150)
+				var point = 150
+				if false == GameManager.Config.empty():
+					point *= GameManager.Config.PointMultiplier
+				GameManager.emit_signal("OnObjectFixed", r.global_position, point)
 				r.queue_free()
 
 func Restart():

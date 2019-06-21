@@ -1,5 +1,6 @@
 extends Node
 
+var Config = {}
 var _Player = null
 signal GameGenerateWorld
 signal CameraZoomIn
@@ -48,7 +49,17 @@ func GetPlayer():
 		_Player = get_tree().get_nodes_in_group("Player").front()
 	return _Player
 	
-func OnGameOver():
+func OnGameOver(endScore):
+#TODO - If Have Time Add HighScore System
+#	var fileName = "res://DataBase/HighScore.json"
+#
+#	var file = File.new()
+#	file.open(fileName, File.WRITE_READ)
+#
+#	var node_data = inst2dict(endScore)
+#	file.store_string(to_json(node_data))
+#	file.close()
+	
 	get_tree().paused = true
 	
 func RestartTheGame():
