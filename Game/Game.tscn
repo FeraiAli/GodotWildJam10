@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://MapGenerator/Procedural/MapMaker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MapGenerator/Procedural/GroudMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://MapGenerator/Procedural/ForestMap.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Game/PointsManager/PointsManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://MapGenerator/TileSet/basictilset_newt.tres" type="TileSet" id=4]
+[ext_resource path="res://MapGenerator/Procedural/ForestMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Game/PointsManager/PointsManager.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,20 +16,21 @@ FlowerCount = 30
 [node name="MapMaker" parent="." instance=ExtResource( 2 )]
 
 [node name="GroundMap" parent="." instance=ExtResource( 3 )]
+tile_set = ExtResource( 4 )
 
 [node name="GlitchTiles" type="YSort" parent="."]
 
 [node name="Scene" type="YSort" parent="."]
 
-[node name="ForestMap" parent="." instance=ExtResource( 4 )]
+[node name="ForestMap" parent="." instance=ExtResource( 5 )]
 
-[node name="TheHouse" parent="." instance=ExtResource( 5 )]
+[node name="TheHouse" parent="." instance=ExtResource( 6 )]
 position = Vector2( 38.6702, 29.3292 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
+[node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 73.5122, 154.855 )
 
 [node name="FlyingObjects" type="YSort" parent="."]
 
-[node name="PointsManager" parent="." instance=ExtResource( 7 )]
+[node name="PointsManager" parent="." instance=ExtResource( 8 )]
 
