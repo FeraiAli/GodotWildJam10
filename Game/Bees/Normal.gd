@@ -1,6 +1,6 @@
 extends Node
 
-var Speed = 150
+var Speed = 100
 var Acceleration = Vector2()
 var Velocity = Vector2()
 

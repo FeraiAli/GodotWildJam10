@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Character/player.png" type="Texture" id=2]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Sprites/Icons/casting_bgr.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Icons/casting_fill.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Character/shadow_new.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Character/player.png" type="Texture" id=3]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sprites/Icons/casting_bgr.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Icons/casting_fill.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
@@ -75,11 +76,15 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 Speed = 40
 
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 13.6233, -1.29832 )
+texture = ExtResource( 2 )
+
 [node name="Body" type="Sprite" parent="."]
 position = Vector2( 14.0696, -25.6922 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 hframes = 9
-frame = 8
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -104,7 +109,7 @@ anims/RUN = SubResource( 5 )
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 17.1235, -17.3614 )
 
-[node name="PlayerUI" parent="." instance=ExtResource( 3 )]
+[node name="PlayerUI" parent="." instance=ExtResource( 4 )]
 
 [node name="RepairCasting" type="TextureProgress" parent="."]
 visible = false
@@ -114,8 +119,8 @@ margin_right = 31.0882
 margin_bottom = -38.4999
 max_value = 0.6
 step = 0.01
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimFinished"]

@@ -2,8 +2,7 @@ extends Node2D
 
 export(int) var AttackRange = 200
 export(int) var Damage = 10
-export(float) var AttackSpeed = 2.0
-
+export(float) var AttackSpeed = 3.0
 const PROJECTILE = preload("res://Game/Flower/FlowerProjectile.tscn")
 
 var Target = null

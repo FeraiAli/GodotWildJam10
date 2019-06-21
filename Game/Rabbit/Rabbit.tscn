@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game/Rabbit/Rabbit.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/glitchobjects/rabbit_strip.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Character/shadow_new.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/glitchobjects/rabbit_strip.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 5 )
@@ -65,13 +66,19 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
 
+[node name="shadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 8.4, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
 [node name="Shape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 8.24305, -8.65311 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -7.1172, -28.343 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 hframes = 10
 frame = 4
