@@ -43,4 +43,5 @@ func OnTreeEntered():
 func OnTimeBeforeGlitch():
 	get_parent().get_node("Anim").play("GLITCH")
 	$ProgressToGlitch.hide()
+	$ProgressToGlitch.value = 0.0
 	set_process(true)
