@@ -16,7 +16,7 @@ func OnEasyPressed():
 	get_tree().change_scene("res://Game/Game.tscn")
 
 func OnMediumPressed():
-	GameManager.Config = { PlayerSpeed = 65, 
+	GameManager.Config = { PlayerSpeed = 60, 
 			FixingArea = 125, 
 			NormalDuration = 15.0, 
 			GlitchHappenChance = 0.1, 
@@ -29,7 +29,7 @@ func OnMediumPressed():
 
 
 func OnHardPressed():
-	GameManager.Config = { PlayerSpeed = 45, 
+	GameManager.Config = { PlayerSpeed = 50, 
 		FixingArea = 100, 
 		NormalDuration = 10.0, 
 		GlitchHappenChance = 0.1, 

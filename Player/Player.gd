@@ -26,6 +26,10 @@ func _ready():
 	$Anim.connect("animation_finished", self, "OnAnimationFinished")
 	
 	Restart()
+
+func _draw():
+	var color = Color(0.68, 1, 0.18,0.1)
+	draw_circle($Position2D.position, FixingArea, color)
 	
 func CameraZoomIn():
 	$Camera2D.zoom.x = max(0.1, $Camera2D.zoom.x - 0.1)
@@ -58,7 +62,7 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_down"):
 		acceleration.y += Speed
 	
-	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 0.0:
+	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 1.0:
 		RepairTimerCounter = 0.0
 		GameManager.emit_signal("OnRepeairBegin")
 		$Anim.play("REPAIRING")
@@ -66,7 +70,7 @@ func _physics_process(delta):
 		$RepairCasting.show()
 		return
 	
-	if Input.is_action_pressed("player_dash") and DashTimerCounter > 2.0:
+	if Input.is_action_pressed("player_dash") and DashTimerCounter > 1.3:
 		DashTimerCounter = 0.0
 		$Anim.play("DASH")
 		velocity += (velocity.normalized() * 1000)
