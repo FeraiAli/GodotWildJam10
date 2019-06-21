@@ -29,7 +29,7 @@ func OnMediumPressed():
 
 
 func OnHardPressed():
-	GameManager.Config = { PlayerSpeed = 60, 
+	GameManager.Config = { PlayerSpeed = 45, 
 		FixingArea = 100, 
 		NormalDuration = 10.0, 
 		GlitchHappenChance = 0.1, 

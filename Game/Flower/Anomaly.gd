@@ -9,13 +9,17 @@ var Target = null
 
 var AttackCounter = 0.0
 
+func _physics_process(delta):
+	if $ProgressToGlitch.is_visible_in_tree():
+		$ProgressToGlitch.value += delta
+		return
+
 func _process(delta):
 	AttackCounter += delta
 	
 	if IsInAttackRange():
 		if CanAttack():
 			Attack()
-
 
 func IsInAttackRange():
 	return get_parent().position.distance_to(Target.position) <= AttackRange
@@ -31,5 +35,12 @@ func CanAttack():
 	return AttackCounter >= AttackSpeed
 
 func OnTreeEntered():
-	get_parent().get_node("Anim").play("GLITCH")
 	Target = GameManager.GetPlayer()
+	$TimeBeforeGlitch.start()
+	$ProgressToGlitch.show()
+	set_process(false)
+
+func OnTimeBeforeGlitch():
+	get_parent().get_node("Anim").play("GLITCH")
+	$ProgressToGlitch.hide()
+	set_process(true)
