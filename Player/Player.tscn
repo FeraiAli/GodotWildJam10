@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Character/shadow_new.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Sprites/Icons/casting_bgr.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/Icons/casting_fill.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/player_footsteps.wav" type="AudioStream" id=7]
+[ext_resource path="res://Player/DashSkill/Ghost.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
@@ -141,5 +142,7 @@ nine_patch_stretch = true
 stream = ExtResource( 7 )
 volume_db = -15.733
 mix_target = 2
+
+[node name="Ghost" parent="." instance=ExtResource( 8 )]
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimFinished"]

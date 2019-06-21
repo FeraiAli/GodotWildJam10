@@ -25,6 +25,8 @@ func _ready():
 	GameManager.connect("CameraZoomOut", self, "CameraZoomOut")
 	$Anim.connect("animation_finished", self, "OnAnimationFinished")
 	
+	$Ghost.connect("OnFinished", self, "OnDashEnd")
+	
 	Restart()
 	
 func CameraZoomIn():
@@ -70,6 +72,7 @@ func _physics_process(delta):
 		DashTimerCounter = 0.0
 		$Anim.play("DASH")
 		velocity += (velocity.normalized() * 1000)
+		$Ghost.Dash(0.2)
 		
 	if acceleration == Vector2():
 		$Anim.play("IDLE")
@@ -106,6 +109,9 @@ func OnAnimFinished(animName):
 					point *= GameManager.Config.PointMultiplier
 				GameManager.emit_signal("OnObjectFixed", r.global_position, point)
 				r.queue_free()
+
+func OnDashEnd():
+	pass
 
 func Restart():
 	RepairTimerCounter = 10.0

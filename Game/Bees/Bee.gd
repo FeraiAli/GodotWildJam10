@@ -24,6 +24,8 @@ func MoveToward(pos, speed):
 	Acceleration += (pos - position).normalized()
 		
 	Velocity += (Acceleration * speed)
+	if Velocity.x < 0:
+		$Sprite.flip_h = true
 	Acceleration = Vector2()
 	Velocity = Velocity.clamped(speed)
 

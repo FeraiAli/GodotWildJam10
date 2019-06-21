@@ -3,7 +3,6 @@ extends Node
 signal OnFinished
 
 var dashTick = 0.0
-var GetCurrentAnimationInfoFn : FuncRef
 var dashTotalTime = 0.0
 var dashTimer = 0.0
 
@@ -57,11 +56,9 @@ func _process(delta : float):
 		var tween = Tween.new()
 		var sprite = Sprite.new()
 		
-		var animInfo = GetCurrentAnimationInfoFn.call_func()
-		
-		sprite.position = animInfo.position
-		sprite.texture = animInfo.texture
-		sprite.flip_h = animInfo.flip_h
+		sprite.texture = $Sprite.texture
+		sprite.flip_h = get_parent().get_node("Body").flip_h
+		sprite.position = get_parent().get_node("Position2D").global_position
 		sprite.set_as_toplevel(true)
 		add_child(sprite)
 		add_child(tween)
