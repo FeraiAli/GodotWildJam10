@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-const DIALOGS = {"Intro": ["This developer made me a happy little land. Full of flowers and cute rabbits, I am so happy to be here. I am the happiest AI ever lived!"],
+const DIALOGS = {"Intro": ["This developer made me a happy little land. Full of flowers and cute rabbits, I am so happy to be here. I am the happiest AI ever lived! I just hope there are no major bugs problems..."],
 					  "Danger":["Something went wrong, this guy can't make anything right. Everyting is so glitchy in this world.",
 					   "Rabbits gone crazy it's must be a some kind of bug. I have to find a fix or i might loose everything."]}
 
