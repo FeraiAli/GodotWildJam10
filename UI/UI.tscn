@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Subtitles/DialogBox.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Assets/Sprites/Icons/progress_repair.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/Icons/under_progress_dash.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Icons/progress_dash.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Fonts/DroidSans.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.392157, 0.0117647, 0.0117647, 1 )
@@ -16,12 +15,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0.545098, 0.878431, 0.0470588, 1 )
-
-[sub_resource type="DynamicFont" id=2]
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 8 )
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -139,21 +132,6 @@ margin_left = 592.0
 margin_top = 324.0
 margin_right = 688.0
 margin_bottom = 394.0
-
-[node name="Polygon2D" type="Polygon2D" parent="Control/GameMenu/VBox"]
-self_modulate = Color( 0.14902, 0.0941176, 0.0941176, 1 )
-position = Vector2( 4.5281, 43.6257 )
-scale = Vector2( 1.0683, 2.3944 )
-polygon = PoolVector2Array( 177.098, -20.3444, 45.5941, -20.3843, -91.5555, -20.3543, -91.5555, -76.4768, 177.098, -76.4496, 176.949, -41.4442 )
-
-[node name="Label" type="Label" parent="Control/GameMenu/VBox/Polygon2D"]
-margin_left = -85.5095
-margin_top = -70.8491
-margin_right = 173.491
-margin_bottom = -10.8491
-custom_fonts/font = SubResource( 2 )
-text = "Left mouse button: Repair glitched ai
-Right mouse button: Dash"
 
 [node name="Restart" type="Button" parent="Control/GameMenu/VBox"]
 margin_right = 96.0
