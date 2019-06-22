@@ -17,6 +17,7 @@ signal ScreenShake
 var _Malfunctions = []
 
 func _input(event):
+	return
 	if event.is_action_pressed("game_generate_world"):
 		emit_signal("GameGenerateWorld")
 	if event.is_action_pressed("game_camera_zoom_in"):
