@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://MapGenerator/Procedural/MapMaker.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Game/ScreenShake/ScreenShake.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Game/PointsManager/PointsManager.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sounds/fretless-by-kevin-macleod.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.3841, 780.623 )
@@ -72,4 +73,9 @@ position = Vector2( 1208.74, -21.4645 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/DownWall"]
 position = Vector2( 63.2261, 1586.7 )
 shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -20.555
+autoplay = true
 
