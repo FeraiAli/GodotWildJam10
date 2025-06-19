@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq4kjko3rvktc"]
+
+[ext_resource type="TileSet" uid="uid://547yi1xfobg4" path="res://MapGenerator/TileSet/basictilset_newt.tres" id="1_xdwjt"]
+
+[node name="GroundMap" type="TileMapLayer"]
+use_parent_material = true
+tile_set = ExtResource("1_xdwjt")

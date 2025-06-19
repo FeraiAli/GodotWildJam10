@@ -1,26 +1,68 @@
-[gd_resource type="TileSet" load_steps=2 format=2]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cdq0ma2ijp80g"]
 
-[ext_resource path="res://Assets/Sprites/Character/body.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://bwjg8ik5wri3l" path="res://Assets/Sprites/Character/body.png" id="1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ot3uo"]
+texture = ExtResource("1")
+margins = Vector2i(0, 64)
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/0/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/2/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/3/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/4/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/5/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/6/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+0:0/7/modulate = Color(0.972549, 0.384314, 0.384314, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rv7o"]
+texture = ExtResource("1")
+margins = Vector2i(0, 96)
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
 [resource]
-0/name = "Path3D"
-0/texture = ExtResource( 1 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 0.972549, 0.384314, 0.384314, 1 )
-0/region = Rect2( 0, 64, 32, 32 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shapes = [  ]
-0/z_index = 0
-1/name = "Tree"
-1/texture = ExtResource( 1 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 96, 32, 32 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shapes = [  ]
-1/z_index = 0
-
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ot3uo")
+sources/1 = SubResource("TileSetAtlasSource_7rv7o")
