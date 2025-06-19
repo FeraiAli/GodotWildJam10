@@ -40,19 +40,6 @@ A unique action-adventure game built with Godot 4.4 where you play as a digital 
 4. Achieve high scores by efficiently fixing corruptions
 5. Prevent the spread of glitches throughout the environment
 
-## 🔧 Configuration
-The game features various configurable parameters:
-```gdscript
-{
-    "GlitchHappenChance": 0.0,
-    "GlitchIncreaseFactor": 0.05,
-    "BeesCount": 1,
-    "RabbitsCount": 500,
-    "FlowerCount": 1,
-    "PointMultiplier": 1.0
-}
-```
-
 ## 🎨 Art Assets
 - Custom pixel art for characters and objects
 - Animated sprites for player actions and effects
@@ -97,7 +84,6 @@ This game was developed for the Godot Wild Jam 10, showcasing various game devel
   - Toggle Bee Glitch: [B]
 
 ## 📝 License
-[Add your license information here]
+MIT License
 
-## 👥 Credits
-[Add credits for team members, assets, and music here] 
+## 👥 Credits - Some cool dudes.

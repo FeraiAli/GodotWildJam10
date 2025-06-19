@@ -5,3 +5,15 @@
 [node name="GroundMap" type="TileMapLayer"]
 use_parent_material = true
 tile_set = ExtResource("1_xdwjt")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0.219608, 0.666667, 0.27451, 1)
