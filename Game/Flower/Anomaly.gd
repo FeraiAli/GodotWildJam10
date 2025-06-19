@@ -1,8 +1,8 @@
 extends Node2D
 
-export(int) var AttackRange = 200
-export(int) var Damage = 10
-export(float) var AttackSpeed = 3.0
+@export var AttackRange: int = 200
+@export var Damage: int = 10
+@export var AttackSpeed: float = 3.0
 const PROJECTILE = preload("res://Game/Flower/FlowerProjectile.tscn")
 
 var Target = null
@@ -26,8 +26,8 @@ func IsInAttackRange():
 
 func Attack():
 	AttackCounter = 0.0
-	var projectile = PROJECTILE.instance()
-	projectile.set_as_toplevel(true)
+	var projectile = PROJECTILE.instantiate()
+	projectile.set_as_top_level(true)
 	get_parent().add_child(projectile)
 	projectile.Init(Target)
 

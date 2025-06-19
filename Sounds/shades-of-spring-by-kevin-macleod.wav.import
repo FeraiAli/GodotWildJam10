@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shades-of-spring-by-kevin-macleod.wav-dd7695b6fdff3708a823321ce6715293.sample"
+type="AudioStreamWAV"
+uid="uid://d4nvwedwrfmst"
+path="res://.godot/imported/shades-of-spring-by-kevin-macleod.wav-dd7695b6fdff3708a823321ce6715293.sample"
 
 [deps]
 
 source_file="res://Sounds/shades-of-spring-by-kevin-macleod.wav"
-dest_files=[ "res://.import/shades-of-spring-by-kevin-macleod.wav-dd7695b6fdff3708a823321ce6715293.sample" ]
+dest_files=["res://.godot/imported/shades-of-spring-by-kevin-macleod.wav-dd7695b6fdff3708a823321ce6715293.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

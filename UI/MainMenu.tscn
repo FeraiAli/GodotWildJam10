@@ -1,234 +1,202 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://bar1x8kaagqxu"]
 
-[ext_resource path="res://UI/UITheme.tres" type="Theme" id=1]
-[ext_resource path="res://UI/MainMenu.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Mainmenu/vbackground.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Mainmenu/titlestrip.png" type="Texture" id=4]
-[ext_resource path="res://UI/title_screen.gd" type="Script" id=5]
-[ext_resource path="res://Sounds/shades-of-spring-by-kevin-macleod.wav" type="AudioStream" id=6]
+[ext_resource type="Theme" uid="uid://c3bwm7ydbr1al" path="res://UI/UITheme.tres" id="1"]
+[ext_resource type="Script" uid="uid://cvkpowwtfojak" path="res://UI/MainMenu.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bf8jvg8bv8bnm" path="res://Assets/Mainmenu/vbackground.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b1431p2motsfi" path="res://Assets/Mainmenu/titlestrip.png" id="4"]
+[ext_resource type="Script" uid="uid://dseuo2ihespuh" path="res://UI/title_screen.gd" id="5"]
+[ext_resource type="AudioStream" uid="uid://d4nvwedwrfmst" path="res://Sounds/shades-of-spring-by-kevin-macleod.wav" id="6"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 resource_name = "ANIMATE"
 step = 0.25
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otjfi"]
+_data = {
+&"ANIMATE": SubResource("1")
 }
 
 [node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+script = ExtResource("2")
 
-[node name="background" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("3")
 centered = false
 
-[node name="title_screen" type="Sprite" parent="."]
-position = Vector2( 647.493, 75.5978 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
+[node name="title_screen" type="Sprite2D" parent="."]
+position = Vector2(647.493, 75.5978)
+scale = Vector2(2, 2)
+texture = ExtResource("4")
 hframes = 4
 frame = 2
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="title_screen"]
-anims/ANIMATE = SubResource( 1 )
+libraries = {
+&"": SubResource("AnimationLibrary_otjfi")
+}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-margin_left = 140.0
-margin_top = 169.0
-margin_right = 1140.0
-margin_bottom = 599.0
-custom_constants/separation = 50
+layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="HighScore" type="Panel" parent="CenterContainer/HBoxContainer"]
-margin_right = 300.0
-margin_bottom = 430.0
-rect_min_size = Vector2( 300, 0 )
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HighScore"]
-margin_right = 300.0
-margin_bottom = 430.0
-rect_min_size = Vector2( 300, 100 )
-custom_constants/separation = 10
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 430.0
+theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 27.0
+layout_mode = 2
 text = "INSTRUCTIONS"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 37.0
-margin_right = 300.0
-margin_bottom = 64.0
+layout_mode = 2
 text = "Arrow keys = move"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 74.0
-margin_right = 300.0
-margin_bottom = 161.0
+layout_mode = 2
 text = "Press enter or left mousebutton to repair glitches in the gameworld."
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Label4" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 171.0
-margin_right = 300.0
-margin_bottom = 198.0
-align = 1
-valign = 1
-autowrap = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 208.0
-margin_right = 300.0
-margin_bottom = 235.0
+layout_mode = 2
 text = "GLITCH OBJECTS"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 245.0
-margin_right = 300.0
-margin_bottom = 272.0
+layout_mode = 2
 text = "Glitched flowers infect bees"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 282.0
-margin_right = 300.0
-margin_bottom = 309.0
+layout_mode = 2
 text = "Glitched bees infect bunnies"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label8" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 319.0
-margin_right = 300.0
-margin_bottom = 376.0
+layout_mode = 2
 text = "Glitched bunnies attack the player"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label9" type="Label" parent="CenterContainer/HBoxContainer/HighScore/VBoxContainer"]
-margin_top = 386.0
-margin_right = 300.0
-margin_bottom = 413.0
+layout_mode = 2
 text = "Getting hit spawns glitch tiles"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Menu" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-margin_left = 350.0
-margin_right = 650.0
-margin_bottom = 430.0
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Easy" type="Button" parent="CenterContainer/HBoxContainer/Menu"]
-margin_right = 300.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 300, 100 )
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
 text = "EASY"
 
 [node name="Medium" type="Button" parent="CenterContainer/HBoxContainer/Menu"]
-margin_top = 110.0
-margin_right = 300.0
-margin_bottom = 210.0
-rect_min_size = Vector2( 300, 100 )
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
 text = "MEDIUM"
 
 [node name="Hard" type="Button" parent="CenterContainer/HBoxContainer/Menu"]
-margin_top = 220.0
-margin_right = 300.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 300, 100 )
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
 text = "HARD"
 
 [node name="Exit" type="Button" parent="CenterContainer/HBoxContainer/Menu"]
-margin_top = 330.0
-margin_right = 300.0
-margin_bottom = 430.0
-rect_min_size = Vector2( 300, 100 )
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
 text = "EXIT"
 
 [node name="Credits" type="Panel" parent="CenterContainer/HBoxContainer"]
-margin_left = 700.0
-margin_right = 1000.0
-margin_bottom = 430.0
-rect_min_size = Vector2( 300, 0 )
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Credits"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.43188
-margin_right = -1.43188
-custom_constants/separation = 10
+offset_left = -1.43188
+offset_right = -1.43188
+theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="CenterContainer/HBoxContainer/Credits/VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 27.0
+layout_mode = 2
 text = "CREDITS"
-valign = 1
+vertical_alignment = 1
 
 [node name="Art" type="Label" parent="CenterContainer/HBoxContainer/Credits/VBoxContainer"]
-margin_top = 37.0
-margin_right = 300.0
-margin_bottom = 64.0
+layout_mode = 2
 text = "Art And sound: NielsB"
-valign = 1
+vertical_alignment = 1
 
 [node name="Dev1" type="Label" parent="CenterContainer/HBoxContainer/Credits/VBoxContainer"]
-margin_top = 74.0
-margin_right = 300.0
-margin_bottom = 101.0
+layout_mode = 2
 text = "Dev -Borislav"
-valign = 1
+vertical_alignment = 1
 
 [node name="Dev2" type="Label" parent="CenterContainer/HBoxContainer/Credits/VBoxContainer"]
-margin_top = 111.0
-margin_right = 300.0
-margin_bottom = 138.0
+layout_mode = 2
 text = "Dev - Ferai"
-valign = 1
+vertical_alignment = 1
 
 [node name="Dev3" type="Label" parent="CenterContainer/HBoxContainer/Credits/VBoxContainer"]
-margin_top = 148.0
-margin_right = 300.0
-margin_bottom = 265.0
+layout_mode = 2
 text = "Music:
  Kevin MacLeod
  (https://incompetech.com)
 "
-valign = 1
-autowrap = true
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
 volume_db = -10.0
 autoplay = true
 

@@ -1,6 +1,6 @@
 extends Area2D
 
-export(String, "Health", "Stamina") var Bonus = "Stamina"
+@export var Bonus = "Stamina" # (String, "Health", "Stamina")
 
 func _ready():
 	$ColorRect/Label.text = "PowerUp \n" + Bonus

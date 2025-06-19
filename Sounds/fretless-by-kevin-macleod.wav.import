@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/fretless-by-kevin-macleod.wav-3378e25a0c7ba46926374b1380435182.sample"
+type="AudioStreamWAV"
+uid="uid://d4ip2uos0mors"
+path="res://.godot/imported/fretless-by-kevin-macleod.wav-3378e25a0c7ba46926374b1380435182.sample"
 
 [deps]
 
 source_file="res://Sounds/fretless-by-kevin-macleod.wav"
-dest_files=[ "res://.import/fretless-by-kevin-macleod.wav-3378e25a0c7ba46926374b1380435182.sample" ]
+dest_files=["res://.godot/imported/fretless-by-kevin-macleod.wav-3378e25a0c7ba46926374b1380435182.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

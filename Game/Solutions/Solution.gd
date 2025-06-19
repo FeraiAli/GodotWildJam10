@@ -1,6 +1,6 @@
 extends Area2D
 
-export(String, "Rabbit", "Flower", "Water") var Solution = "Rabbit"
+@export var Solution = "Rabbit" # (String, "Rabbit", "Flower", "Water")
 
 func _ready():
 	add_to_group(Solution)

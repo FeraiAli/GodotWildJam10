@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 const SPEED = 200
 #const DAMAGE
@@ -7,7 +7,7 @@ var Target = null
 var Direction
 
 func _ready():
-	GameManager.connect("GameGenerateWorld", self, "SelfDestroy")
+	GameManager.connect("GameGenerateWorld", Callable(self, "SelfDestroy"))
 	#play("idle")
 
 func SelfDestroy():
@@ -16,7 +16,7 @@ func SelfDestroy():
 	
 func _process(delta):
 	if null != Target:
-		TargetPos = Target.get_node("Position2D").global_position
+		TargetPos = Target.get_node("Marker2D").global_position
 		
 	var dist = TargetPos.distance_to(self.global_position)
 	if dist < 10.0:
@@ -31,8 +31,8 @@ func _process(delta):
 		queue_free()
 	
 func Init(target):
-	position = get_parent().get_node("Position2D").global_position
+	position = get_parent().get_node("Marker2D").global_position
 	var weakRefTarget = weakref(target)
 	Target = weakRefTarget.get_ref()
-	Direction = Target.get_node("Position2D").global_position - self.global_position
-	rotation = global_position.angle_to_point(Target.get_node("Position2D").global_position) + 1.6
+	Direction = Target.get_node("Marker2D").global_position - self.global_position
+	rotation = global_position.angle_to_point(Target.get_node("Marker2D").global_position) + 1.6

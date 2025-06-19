@@ -3,8 +3,8 @@ extends Node2D
 const NORMAL_BEHAVIOR = preload("res://Game/Bees/Normal.tscn")
 const ANOMALY_BEHAVIOR = preload("res://Game/Bees/Anomaly.tscn")
 
-var Normal = NORMAL_BEHAVIOR.instance()
-var Anomaly = ANOMALY_BEHAVIOR.instance()
+var Normal = NORMAL_BEHAVIOR.instantiate()
+var Anomaly = ANOMALY_BEHAVIOR.instantiate()
 
 var Acceleration = Vector2()
 var Velocity = Vector2()
@@ -25,9 +25,9 @@ func MoveToward(pos, speed):
 		
 	Velocity += (Acceleration * speed)
 	if Velocity.x < 0:
-		$Sprite.flip_h = true
+		$Sprite2D.flip_h = true
 	Acceleration = Vector2()
-	Velocity = Velocity.clamped(speed)
+	Velocity = Velocity.limit_length(speed)
 
 func _process(delta):
 	position += Velocity * delta

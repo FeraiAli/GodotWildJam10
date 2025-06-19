@@ -1,8 +1,8 @@
 extends Node2D
 
-export(int) var BeesCount = 22
-export(int) var RabbitsCount = 33
-export(int) var FlowerCount = 80
+@export var BeesCount: int = 22
+@export var RabbitsCount: int = 33
+@export var FlowerCount: int = 80
 
 const BEE = preload("res://Game/Bees/Bee.tscn")
 const RABBIT = preload("res://Game/Rabbit/Rabbit.tscn")
@@ -11,14 +11,14 @@ const SOLUTION = preload("res://Game/Solutions/Solution.tscn")
 const GLITCHED_TILE = preload("res://Game/GlitchedTile/GlitchedTile.tscn")
 
 func _ready():
-	if false == GameManager.Config.empty():
+	if false == GameManager.Config.is_empty():
 		BeesCount = GameManager.Config.BeesCount
 		RabbitsCount = GameManager.Config.RabbitsCount
 		FlowerCount = GameManager.Config.FlowerCount
 	
 	$Player.get_node("PlayerUI").TotalObjects = RabbitsCount + FlowerCount
-	GameManager.connect("RequestGlitchingTile", self, "GlitchTile")
-	GameManager.connect("GameGenerateWorld", self, "Restart")
+	GameManager.connect("RequestGlitchingTile", Callable(self, "GlitchTile"))
+	GameManager.connect("GameGenerateWorld", Callable(self, "Restart"))
 	randomize()
 	
 	CreateObject(RABBIT, $Scene, RabbitsCount)
@@ -47,12 +47,12 @@ func GetRandomPosition():
 	
 func CreateObject(objectCreator, scene, count):
 	for i in range(0, count):
-		var obj = objectCreator.instance()
+		var obj = objectCreator.instantiate()
 		obj.position = GetRandomPosition()
 		scene.add_child(obj)
 		
 func GlitchTile():
-	var tile = GLITCHED_TILE.instance()
+	var tile = GLITCHED_TILE.instantiate()
 	tile.position = GetRandomPosition()
 	$GlitchTiles.add_child(tile)
 	$Player.get_node("PlayerUI").OnTileGlitched()

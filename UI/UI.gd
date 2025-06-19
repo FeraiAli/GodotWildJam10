@@ -8,9 +8,9 @@ var RepairUsedTimes = 0
 var TimeSinceStart = 0
 
 func _ready():
-	GameManager.connect("OnRepeairBegin", self, "OnRepairUsed")
-	GameManager.connect("OnObjectFixed", self, "OnPointGained")
-	GameManager.connect("ObjectIsGlitching", self, "OnObjectGlitched")
+	GameManager.connect("OnRepeairBegin", Callable(self, "OnRepairUsed"))
+	GameManager.connect("OnObjectFixed", Callable(self, "OnPointGained"))
+	GameManager.connect("ObjectIsGlitching", Callable(self, "OnObjectGlitched"))
 	
 func _process(delta):
 	TimeSinceStart += delta
@@ -37,7 +37,7 @@ func OnTileGlitched():
 	$Control/HBoxContainer/WorldGlitchPercentage.text = "WORLD GLITCH " + GetGlitchPercent() + "%"
 	
 func GetGlitchPercent():
-	var objects = range_lerp(GlitchedObjects, 0, TotalObjects, 0, 25)
+	var objects = remap(GlitchedObjects, 0, TotalObjects, 0, 25)
 	var result = min(100, objects + GlitchedTiles) as int
 	if result == 100:
 		var score = max(0, Points - (RepairUsedTimes * 25))

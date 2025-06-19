@@ -1,158 +1,142 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://bc377ocpbhrqf"]
 
-[ext_resource path="res://UI/UI.gd" type="Script" id=1]
-[ext_resource path="res://Subtitles/DialogBox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/UITheme.tres" type="Theme" id=3]
-[ext_resource path="res://Assets/Sprites/Icons/under_progress_repair.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Icons/progress_repair.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Icons/under_progress_dash.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Icons/progress_dash.png" type="Texture" id=7]
+[ext_resource type="Script" uid="uid://djpd5i4es1goe" path="res://UI/UI.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Subtitles/DialogBox.tscn" id="2"]
+[ext_resource type="Theme" uid="uid://c3bwm7ydbr1al" path="res://UI/UITheme.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://dj6taqm7fyakb" path="res://Assets/Sprites/Icons/under_progress_repair.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://be17iflh3r3s8" path="res://Assets/Sprites/Icons/progress_repair.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bbp8d8hwb48lm" path="res://Assets/Sprites/Icons/under_progress_dash.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dsp50j44wbdm2" path="res://Assets/Sprites/Icons/progress_dash.png" id="7"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.392157, 0.0117647, 0.0117647, 1 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.392157, 0.0117647, 0.0117647, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color( 0.545098, 0.878431, 0.0470588, 1 )
+border_color = Color(0.545098, 0.878431, 0.0470588, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="Intro" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 63.4534 )
-scale = Vector2( 1, 1.01969 )
+[node name="Intro" parent="." instance=ExtResource("2")]
+position = Vector2(0, 63.4534)
+scale = Vector2(1, 1.01969)
 
-[node name="OnDanger" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 55.4225 )
-scale = Vector2( 1, 1.03282 )
+[node name="OnDanger" parent="." instance=ExtResource("2")]
+position = Vector2(0, 55.4225)
+scale = Vector2(1, 1.03282)
 
 [node name="Control" type="Control" parent="."]
-pause_mode = 2
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.36041
-margin_right = -1.36035
-theme = ExtResource( 3 )
+offset_left = -1.36041
+offset_right = -1.36035
+theme = ExtResource("3")
 
 [node name="Panel" type="Panel" parent="Control"]
-margin_left = 10.0
-margin_top = 680.0
-margin_right = 180.0
-margin_bottom = 760.0
+layout_mode = 0
+offset_left = 10.0
+offset_top = 680.0
+offset_right = 180.0
+offset_bottom = 760.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Repair" type="TextureProgress" parent="Control/Panel/HBoxContainer"]
-margin_right = 83.0
-margin_bottom = 80.0
+[node name="Repair" type="TextureProgressBar" parent="Control/Panel/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
 fill_mode = 3
 nine_patch_stretch = true
+texture_under = ExtResource("4")
+texture_progress = ExtResource("5")
 
-[node name="Dash" type="TextureProgress" parent="Control/Panel/HBoxContainer"]
-margin_left = 87.0
-margin_right = 170.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 40, 0 )
+[node name="Dash" type="TextureProgressBar" parent="Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.3
 step = 0.01
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
 fill_mode = 3
 nine_patch_stretch = true
+texture_under = ExtResource("6")
+texture_progress = ExtResource("7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
 anchor_right = 1.0
-margin_left = 5.0
-margin_top = 2.0
-margin_right = -5.0
-custom_constants/separation = 5
-__meta__ = {
-"_edit_lock_": true
-}
+offset_left = 5.0
+offset_top = 2.0
+offset_right = -5.0
+theme_override_constants/separation = 5
 
 [node name="Points" type="Label" parent="Control/HBoxContainer"]
-margin_right = 405.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_horizontal = 3
-custom_styles/normal = SubResource( 1 )
+theme_override_styles/normal = SubResource("1")
 text = "POINTS : 0"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WorldGlitchPercentage" type="Label" parent="Control/HBoxContainer"]
-margin_left = 410.0
-margin_right = 815.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_horizontal = 3
-custom_styles/normal = SubResource( 1 )
+theme_override_styles/normal = SubResource("1")
 text = "WORLD GLITCH 0%"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SurvivalTime" type="Label" parent="Control/HBoxContainer"]
-margin_left = 820.0
-margin_right = 1225.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_horizontal = 3
-custom_styles/normal = SubResource( 1 )
+theme_override_styles/normal = SubResource("1")
 text = "SURVIVAL TIME : 0sec"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MoreOptions" type="Button" parent="Control/HBoxContainer"]
-margin_left = 1230.0
-margin_right = 1270.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 0 )
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
 text = "..."
 
 [node name="GameMenu" type="CenterContainer" parent="Control"]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -6.43921
-margin_top = 47.4243
-margin_right = -6.43921
-margin_bottom = -2.57568
+offset_left = -6.43921
+offset_top = 47.4243
+offset_right = -6.43921
+offset_bottom = -2.57568
 
 [node name="VBox" type="VBoxContainer" parent="Control/GameMenu"]
-margin_left = 592.0
-margin_top = 324.0
-margin_right = 688.0
-margin_bottom = 394.0
+layout_mode = 2
 
 [node name="Restart" type="Button" parent="Control/GameMenu/VBox"]
-margin_right = 96.0
-margin_bottom = 33.0
+layout_mode = 2
 text = "RESTART"
 
 [node name="BackToMenu" type="Button" parent="Control/GameMenu/VBox"]
-margin_top = 37.0
-margin_right = 96.0
-margin_bottom = 70.0
+layout_mode = 2
 text = "QUIT"
 
 [node name="HighScore" type="CenterContainer" parent="Control/GameMenu/VBox"]
 visible = false
-margin_top = 74.0
-margin_right = 96.0
-margin_bottom = 101.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/GameMenu/VBox/HighScore"]
-margin_right = 95.0
-margin_bottom = 27.0
+layout_mode = 2
 text = "SCORE 10"
 
 [connection signal="pressed" from="Control/HBoxContainer/MoreOptions" to="." method="OnMoreOptionsPressed"]

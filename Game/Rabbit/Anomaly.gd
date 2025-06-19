@@ -1,24 +1,24 @@
 extends Node2D
 
-export(int) var Damage = 10
+@export var Damage: int = 10
 
 #export(int) var AttackCulminationFrame = 0
-export(int) var MaxDistanceFromHome = 500
+@export var MaxDistanceFromHome: int = 500
 
-export(int) var SightRange = 300
-export(int) var AttackRadius = 20
+@export var SightRange: int = 300
+@export var AttackRadius: int = 20
 
-export(int) var Speed = 170
-export(float) var AttackSpeed = 1.0
+@export var Speed: int = 170
+@export var AttackSpeed: float = 1.0
 
-var AttackCounter = 0.0
-var AttackDelayCounter = 0.0
-var Target = null
+var AttackCounter: float = 0.0
+var AttackDelayCounter: float = 0.0
+var Target: Node2D = null
 
-func _ready():
+func _ready() -> void:
 	randomize()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	AttackCounter += delta
 	
 	if IsInAttackRange():
@@ -31,31 +31,32 @@ func _process(delta):
 	else:
 		MoveTowardTarget(delta)
 
-func IsInAttackRange():
+func IsInAttackRange() -> bool:
 	return get_parent().position.distance_to(GetTargetPosition()) <= AttackRadius
 	
-func CanAttack():
+func CanAttack() -> bool:
 	return AttackCounter >= AttackSpeed
 	
-func Attack():
+func Attack() -> void:
 	AttackDelayCounter = 0.0
 	AttackCounter = 0.0
 	GameManager.emit_signal("RequestGlitchingTile")
 
-func Wait():
+func Wait() -> void:
 	pass
 
-func MoveTowardTarget(delta):
+func MoveTowardTarget(delta: float) -> void:
 	var direction = GetTargetPosition() - get_parent().position
+	var velocity = direction.normalized() * Speed
+	get_parent().set_velocity(velocity)
+	get_parent().move_and_slide()
+	get_parent().velocity
 
-	var velocity = (direction.normalized() * Speed)
-	get_parent().move_and_slide(velocity)
-
-func GetTargetPosition():
+func GetTargetPosition() -> Vector2:
 	return Target.position
 	
-func OnTreeEntered():
+func OnTreeEntered() -> void:
 	get_parent().get_node("Anim").play("JUMP_GLITCH")
-	get_parent().get_node("Anim").playback_speed = 3
-	get_parent().get_node("Anim").playback_speed = randf() * 2 + 1
+	get_parent().get_node("Anim").speed_scale = 3.0
+	get_parent().get_node("Anim").speed_scale = randf() * 2.0 + 1.0
 	Target = GameManager.GetPlayer()

@@ -1,23 +1,20 @@
 extends Node
 
-var Config = {}
-var _Player = null
-signal GameGenerateWorld
-signal CameraZoomIn
-signal CameraZoomOut
+var Config: Dictionary = {}
+var _Player: Node = null
 
-signal RequestGlitchingTile
+signal GameGenerateWorld()
+signal CameraZoomIn()
+signal CameraZoomOut()
+signal RequestGlitchingTile()
+signal OnRepeairBegin()
+signal OnObjectFixed(position: Vector2, points: int)
+signal ObjectIsGlitching()
+signal ScreenShake(length: float, power: float, priority: int)
 
-signal OnRepeairBegin
-signal OnObjectFixed
-signal ObjectIsGlitching
+var _Malfunctions: Array[String] = []
 
-signal ScreenShake
-
-var _Malfunctions = []
-
-func _input(event):
-	return
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_generate_world"):
 		emit_signal("GameGenerateWorld")
 	if event.is_action_pressed("game_camera_zoom_in"):
@@ -32,27 +29,27 @@ func _input(event):
 	if event.is_action_pressed("game_glitch_bee"):
 		AlternateMalfunction("Bee")
 
-func AlternateMalfunction(groupId):
+func AlternateMalfunction(groupId: String) -> void:
 	if _Malfunctions.has(groupId):
 		TrySolution(groupId)
 	else:
 		CreateGlitch(groupId)
 
-func CreateGlitch(groupId):
-	_Malfunctions.push_back(groupId)
+func CreateGlitch(groupId: String) -> void:
+	_Malfunctions.append(groupId)
 	get_tree().call_group(groupId, "ChangeToGlitch")
 
-func TrySolution(groupId):
+func TrySolution(groupId: String) -> void:
 	_Malfunctions.erase(groupId)
 	#FindSolutions.push_back(groupId)
 	get_tree().call_group(groupId, "ChangeToNormal")
 	
-func GetPlayer():
+func GetPlayer() -> Node:
 	if _Player == null:
 		_Player = get_tree().get_nodes_in_group("Player").front()
 	return _Player
 	
-func OnGameOver(endScore):
+func OnGameOver(endScore: int) -> void:
 #TODO - If Have Time Add HighScore System
 #	var fileName = "res://DataBase/HighScore.json"
 #
@@ -65,6 +62,6 @@ func OnGameOver(endScore):
 	
 	get_tree().paused = true
 	
-func RestartTheGame():
+func RestartTheGame() -> void:
 	get_tree().paused = false
 	emit_signal("GameGenerateWorld")

@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://b8jjxhd61unrh"]
 
-[ext_resource path="res://Game/Bees/Normal.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://c2l2vkbpugxci" path="res://Game/Bees/Normal.gd" id="1"]
 
 [node name="Normal" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="FindNewTarget" type="Timer" parent="."]
 wait_time = 3.0

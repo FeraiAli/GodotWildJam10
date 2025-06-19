@@ -1,92 +1,95 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://diyq6dhexdl0c"]
 
-[ext_resource path="res://Game/Rabbit/Rabbit.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Character/shadow_new.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/glitchobjects/rabbit_strip.png" type="Texture" id=3]
+[ext_resource type="Script" uid="uid://nfld2tugn3hy" path="res://Game/Rabbit/Rabbit.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d036dift3c7bl" path="res://Assets/Sprites/Character/shadow_new.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bjmyb5t7swkr4" path="res://Assets/Sprites/glitchobjects/rabbit_strip.png" id="3"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 5 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(10, 10)
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "IDLE_NORMAL"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 0 ]
+"values": [0]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 resource_name = "JUMP_GLITCH"
 length = 1.25
-loop = true
+loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 5, 6, 7, 8, 9 ]
+"values": [5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "JUMP_NORMAL"
 length = 1.1
-loop = true
+loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ 1, 2, 3, 4 ]
+"values": [1, 2, 3, 4]
 }
 
-[node name="Rabbit" type="KinematicBody2D" groups=[
-"Rabbit",
-]]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84q2e"]
+_data = {
+&"IDLE_NORMAL": SubResource("2"),
+&"JUMP_GLITCH": SubResource("3"),
+&"JUMP_NORMAL": SubResource("4")
+}
+
+[node name="Rabbit" type="CharacterBody2D" groups=["Rabbit"]]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="shadow" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.45098 )
-position = Vector2( 8.4, 0 )
-scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 2 )
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.45098)
+position = Vector2(8.4, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2")
 
 [node name="Shape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 8.24305, -8.65311 )
-shape = SubResource( 1 )
+position = Vector2(8.24305, -8.65311)
+shape = SubResource("1")
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -7.1172, -28.343 )
-texture = ExtResource( 3 )
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.1172, -28.343)
+texture = ExtResource("3")
 centered = false
 hframes = 10
-frame = 4
 
 [node name="Anim" type="AnimationPlayer" parent="."]
-anims/IDLE_NORMAL = SubResource( 2 )
-anims/JUMP_GLITCH = SubResource( 3 )
-anims/JUMP_NORMAL = SubResource( 4 )
+libraries = {
+&"": SubResource("AnimationLibrary_84q2e")
+}
 
 [node name="TimeBeforeGlitch" type="Timer" parent="."]
-

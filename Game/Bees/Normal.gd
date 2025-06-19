@@ -15,7 +15,7 @@ func _ready():
 	flowerTargets.shuffle()
 	
 func _process(delta):
-	var TargetFlowerPosition = flowerTargets[indexTarget].get_node("Position2D").global_position
+	var TargetFlowerPosition = flowerTargets[indexTarget].get_node("Marker2D").global_position
 	
 	if get_parent().position.distance_to(TargetFlowerPosition) < 5:
 		if flowerTargets[indexTarget].IsNormalBehavior == false:

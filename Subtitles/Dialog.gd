@@ -5,7 +5,7 @@ const DIALOGS = {"Intro": ["This developer made me a happy little land. Full of 
 					   "Rabbits gone crazy it's must be a some kind of bug. I have to find a fix or i might loose everything."]}
 
 					
-export(String, "Intro", "Danger") var DialogType = "Intro"
+@export var DialogType = "Intro" # (String, "Intro", "Danger")
 	
 var dialog = DIALOGS.get(DialogType)
 
@@ -13,7 +13,7 @@ var page = 0
 var skippedDialog = false
 
 func _ready():
-	set_bbcode(dialog[page])
+	text = dialog[page]
 	set_visible_characters(0)
 
 func _input(event):
@@ -38,7 +38,7 @@ func _on_Timer_timeout():
 func RefreshDialog():
 	if page < dialog.size() - 1:
 		page += 1
-		set_bbcode(dialog[page])
+		text = dialog[page]
 		set_visible_characters(0)
 
 func CheckForEndOfDialog():

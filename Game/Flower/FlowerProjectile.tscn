@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Sprites/glitchobjects/FlowerProjectile/new_Projectile.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/glitchobjects/FlowerProjectile/new_Projectile.png" type="Texture2D" id=1]
 [ext_resource path="res://Game/Flower/FlowerProjectile.gd" type="Script" id=2]
 
-[node name="FlowerProjectile" type="Sprite"]
+[node name="FlowerProjectile" type="Sprite2D"]
 rotation = -1.5708
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

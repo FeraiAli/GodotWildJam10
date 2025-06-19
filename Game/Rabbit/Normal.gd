@@ -9,7 +9,7 @@ var JumpDelay = 1
 
 func _ready():
 	randomize()
-	get_parent().get_node("Anim").playback_speed = 2
+	get_parent().get_node("Anim").speed_scale = 2.0
 	JumpDelay = randf() * 3 + 1
 	InitialPosition = get_parent().position
 	
@@ -23,13 +23,13 @@ func _process(delta):
 	elif JumpCounter > JumpDelay:
 		JumpCounter = 0.0
 		var degree = randi() % 360
-		var radian = deg2rad(degree)
+		var radian = deg_to_rad(degree)
 		var direction = Vector2(cos(radian), sin(radian))
 		Acceleration += direction.normalized()
 
 	Velocity += (Acceleration * Speed)
 	Acceleration = Vector2()
-	Velocity = Velocity.clamped(Speed)
+	Velocity = Velocity.limit_length(Speed)
 	
 	if Velocity == Vector2():
 		get_parent().get_node("Anim").play("IDLE_NORMAL")

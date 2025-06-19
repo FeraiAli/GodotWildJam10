@@ -1,25 +1,25 @@
 extends Node
 
-signal OnFinished
+signal OnFinished()
 
-var dashTick = 0.0
-var dashTotalTime = 0.0
-var dashTimer = 0.0
+var dashTick: float = 0.0
+var dashTotalTime: float = 0.0
+var dashTimer: float = 0.0
 
-const dashCooldown = 1.0
-var dashCooldownTimer = dashCooldown
+const dashCooldown: float = 1.0
+var dashCooldownTimer: float = dashCooldown
 
-var finished = false
+var finished: bool = false
 
-func _ready():
+func _ready() -> void:
 	set_process(false)
 
-func Dash(dashTime):
+func Dash(dashTime: float) -> bool:
 	var result = Start()
 	dashTotalTime = dashTime
 	return result
 	
-func Start():
+func Start() -> bool:
 	if dashCooldownTimer < dashCooldown:
 		return false
 		
@@ -31,7 +31,7 @@ func Start():
 	set_process(true)
 	return true
 	
-func _process(delta : float):
+func _process(delta: float) -> void:
 	dashCooldownTimer += delta
 	
 	if dashCooldownTimer == dashCooldown:
@@ -53,28 +53,24 @@ func _process(delta : float):
 	if dashTick > 0.05:
 		dashTick -= 0.05
 			
-		var tween = Tween.new()
-		var sprite = Sprite.new()
-		
-		sprite.texture = $Sprite.texture
+		var sprite = Sprite2D.new()
+		sprite.texture = $Sprite2D.texture
 		sprite.flip_h = get_parent().get_node("Body").flip_h
-		sprite.position = get_parent().get_node("Position2D").global_position
-		sprite.set_as_toplevel(true)
+		sprite.position = get_parent().get_node("Marker2D").global_position
+		sprite.set_as_top_level(true)
 		add_child(sprite)
-		add_child(tween)
 		
 		var tweenTime = 0.5
 		if dashTotalTime > 0.0:
-			tweenTime = range_lerp(dashTimer, 0.0, dashTotalTime, 1.2, 0.1)
+			tweenTime = remap(dashTimer, 0.0, dashTotalTime, 1.2, 0.1)
 		
-		tween.interpolate_property(sprite, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), tweenTime, Tween.TRANS_SINE, Tween.EASE_OUT);
-		tween.connect("tween_completed", self, "OnTweenCompleted", [tween, sprite])
-		tween.start()
+		var tween = create_tween()
+		tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0), tweenTime).from(Color(1, 1, 1, 1)).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.finished.connect(func(): OnTweenCompleted(sprite))
 	
-func Stop():
+func Stop() -> void:
 	emit_signal("OnFinished")
 	set_process(false)
 
-func OnTweenCompleted(tween, sprite):
-	tween.queue_free()
+func OnTweenCompleted(sprite: Sprite2D) -> void:
 	sprite.queue_free()

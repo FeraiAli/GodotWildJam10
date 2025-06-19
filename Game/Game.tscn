@@ -26,9 +26,9 @@ FlowerCount = 30
 [node name="GroundMap" parent="." instance=ExtResource( 3 )]
 tile_set = ExtResource( 4 )
 
-[node name="GlitchTiles" type="YSort" parent="."]
+[node name="GlitchTiles" type="Node2D" parent="."]
 
-[node name="Scene" type="YSort" parent="."]
+[node name="Scene" type="Node2D" parent="."]
 
 [node name="ForestMap" parent="." instance=ExtResource( 5 )]
 
@@ -38,7 +38,7 @@ position = Vector2( 38.6702, 29.3292 )
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 73.5122, 154.855 )
 
-[node name="FlyingObjects" type="YSort" parent="."]
+[node name="FlyingObjects" type="Node2D" parent="."]
 
 [node name="ScreenShake" parent="." instance=ExtResource( 8 )]
 

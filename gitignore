@@ -1,0 +1,37 @@
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+*.import
+
+# OS-specific ignores
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Godot Mono (C#) - if using C#
+.mono/
+data_*/               # Godot mono temp files
+mono_crash.*
+
+# Godot temporary files
+*.tmp
+*.translation
+
+# User/editor-specific config
+godot.editor
+
+# Build artifacts (if exporting)
+*.exe
+*.apk
+*.xcodeproj
+*.pck
+*.zip
+*.tar.gz
+*.bin
+*.dmg
+
+# Backup files
+*.bak
+*.old
+*~ 
