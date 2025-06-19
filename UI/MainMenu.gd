@@ -10,9 +10,9 @@ func OnEasyPressed() -> void:
 		"NormalDuration": 20.0, 
 		"GlitchHappenChance": 0.0, 
 		"GlitchIncreaseFactor": 0.05,
-		"BeesCount": 1,
-		"RabbitsCount": 500,
-		"FlowerCount": 1,
+		"BeesCount": 10,
+		"RabbitsCount": 20,
+		"FlowerCount": 60,
 		"PointMultiplier": 1.0 
 	}
 	get_tree().change_scene_to_file("res://Game/Game.tscn")

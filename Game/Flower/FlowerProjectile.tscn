@@ -1,15 +1,48 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://u73myvxpmce5"]
 
-[ext_resource path="res://Assets/Sprites/glitchobjects/FlowerProjectile/new_Projectile.png" type="Texture2D" id=1]
-[ext_resource path="res://Game/Flower/FlowerProjectile.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://ld4v540l5xbk" path="res://Assets/Sprites/glitchobjects/FlowerProjectile/1.png" id="1_uftct"]
+[ext_resource type="Script" uid="uid://ct7y1irek0t6r" path="res://Game/Flower/FlowerProjectile.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://br2btytdac6bs" path="res://Assets/Sprites/glitchobjects/FlowerProjectile/2.png" id="2_dguom"]
+[ext_resource type="Texture2D" uid="uid://c8blh7gt38iaa" path="res://Assets/Sprites/glitchobjects/FlowerProjectile/3.png" id="3_5tqjl"]
+[ext_resource type="Texture2D" uid="uid://jhdtwys4mon7" path="res://Assets/Sprites/glitchobjects/FlowerProjectile/4.png" id="4_sk5lm"]
+[ext_resource type="Texture2D" uid="uid://dvrvyapg4c1or" path="res://Assets/Sprites/glitchobjects/FlowerProjectile/5.png" id="5_3a6oy"]
+[ext_resource type="Texture2D" uid="uid://dagcolpnkjtnm" path="res://Assets/Sprites/glitchobjects/FlowerProjectile/6.png" id="6_kphtc"]
 
-[node name="FlowerProjectile" type="Sprite2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gid4k"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": ExtResource("1_uftct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dguom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5tqjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sk5lm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3a6oy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kphtc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FlowerProjectile" type="AnimatedSprite2D"]
 rotation = -1.5708
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+scale = Vector2(0.04, 0.04)
+sprite_frames = SubResource("SpriteFrames_gid4k")
+frame = 5
+frame_progress = 0.303597
+script = ExtResource("2")
 
 [node name="LifeRemaining" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 autostart = true
-

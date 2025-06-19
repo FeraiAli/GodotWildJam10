@@ -1,90 +1,90 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://bc0b0of3kv4lv"]
 
-[ext_resource path="res://Game/Game.gd" type="Script" id=1]
-[ext_resource path="res://MapGenerator/Procedural/MapMaker.tscn" type="PackedScene" id=2]
-[ext_resource path="res://MapGenerator/Procedural/GroudMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://MapGenerator/TileSet/basictilset_newt.tres" type="TileSet" id=4]
-[ext_resource path="res://MapGenerator/Procedural/ForestMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Game/TheHouse/TheHouse.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Game/ScreenShake/ScreenShake.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Game/PointsManager/PointsManager.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/fretless-by-kevin-macleod.wav" type="AudioStream" id=10]
+[ext_resource type="Script" uid="uid://dmkk60rs0um6w" path="res://Game/Game.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://7qk02mylmnlr" path="res://MapGenerator/Procedural/MapMaker.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dd76tyk2jc4n8" path="res://MapGenerator/Procedural/GroudMap.tscn" id="3"]
+[ext_resource type="TileSet" uid="uid://547yi1xfobg4" path="res://MapGenerator/TileSet/basictilset_newt.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://ovlfww1cq13m" path="res://MapGenerator/Procedural/ForestMap.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://315a8je6alpl" path="res://Game/TheHouse/TheHouse.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://d0456daaauetd" path="res://Player/Player.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bu8ffvgs6ssnw" path="res://Game/ScreenShake/ScreenShake.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://i3svfdssihrl" path="res://Game/PointsManager/PointsManager.tscn" id="9"]
+[ext_resource type="AudioStream" uid="uid://d4ip2uos0mors" path="res://Sounds/fretless-by-kevin-macleod.wav" id="10"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 27.3841, 780.623 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(54.7682, 1561.25)
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 1300.28, 33.3352 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(2600.56, 66.6704)
 
 [node name="Game" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 FlowerCount = 30
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0.219608, 0.666667, 0.27451, 1)
 
-[node name="MapMaker" parent="." instance=ExtResource( 2 )]
+[node name="MapMaker" parent="." instance=ExtResource("2")]
 
-[node name="GroundMap" parent="." instance=ExtResource( 3 )]
-tile_set = ExtResource( 4 )
+[node name="GroundMap" parent="." instance=ExtResource("3")]
+tile_set = ExtResource("4")
 
 [node name="GlitchTiles" type="Node2D" parent="."]
 
 [node name="Scene" type="Node2D" parent="."]
 
-[node name="ForestMap" parent="." instance=ExtResource( 5 )]
+[node name="ForestMap" parent="." instance=ExtResource("5")]
 
-[node name="TheHouse" parent="." instance=ExtResource( 6 )]
-position = Vector2( 38.6702, 29.3292 )
+[node name="TheHouse" parent="." instance=ExtResource("6")]
+position = Vector2(38.6702, 29.3292)
 
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 73.5122, 154.855 )
+[node name="Player" parent="." instance=ExtResource("7")]
+position = Vector2(73.5122, 154.855)
 
 [node name="FlyingObjects" type="Node2D" parent="."]
 
-[node name="ScreenShake" parent="." instance=ExtResource( 8 )]
+[node name="ScreenShake" parent="." instance=ExtResource("8")]
 
-[node name="PointsManager" parent="." instance=ExtResource( 9 )]
+[node name="PointsManager" parent="." instance=ExtResource("9")]
 
 [node name="Walls" type="Node" parent="."]
 
 [node name="LeftWall" type="StaticBody2D" parent="Walls"]
-position = Vector2( -43, 0 )
+position = Vector2(-43, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
-position = Vector2( 16.9681, 774.158 )
-shape = SubResource( 1 )
+position = Vector2(16.9681, 774.158)
+shape = SubResource("1")
 
 [node name="RightWallk" type="StaticBody2D" parent="Walls"]
-position = Vector2( -43, 0 )
+position = Vector2(-43, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWallk"]
-position = Vector2( 2631.57, 774.158 )
-shape = SubResource( 1 )
+position = Vector2(2631.57, 774.158)
+shape = SubResource("1")
 
 [node name="UpWall" type="StaticBody2D" parent="Walls"]
-position = Vector2( 1208.74, -21.4645 )
+position = Vector2(1208.74, -21.4645)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/UpWall"]
-position = Vector2( 82.1997, 38.4291 )
-shape = SubResource( 2 )
+position = Vector2(82.1997, 38.4291)
+shape = SubResource("2")
 
 [node name="DownWall" type="StaticBody2D" parent="Walls"]
-position = Vector2( 1208.74, -21.4645 )
+position = Vector2(1208.74, -21.4645)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/DownWall"]
-position = Vector2( 63.2261, 1586.7 )
-shape = SubResource( 2 )
+position = Vector2(63.2261, 1586.7)
+shape = SubResource("2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource("10")
 volume_db = -20.555
 autoplay = true
-

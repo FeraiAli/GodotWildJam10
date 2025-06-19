@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://i3svfdssihrl"]
 
-[ext_resource path="res://UI/PointsTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Game/PointsManager/PointsManager.gd" type="Script" id=2]
+[ext_resource type="Theme" uid="uid://ctf6yglhau1rq" path="res://UI/PointsTheme.tres" id="1"]
+[ext_resource type="Script" uid="uid://7si7ssybq8w4" path="res://Game/PointsManager/PointsManager.gd" id="2"]
 
 [node name="PointsManager" type="Control"]
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
-
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1")
+script = ExtResource("2")

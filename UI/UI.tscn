@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bc377ocpbhrqf"]
 
 [ext_resource type="Script" uid="uid://djpd5i4es1goe" path="res://UI/UI.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Subtitles/DialogBox.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://d0eo4m3jxuj0l" path="res://Subtitles/DialogBox.tscn" id="2"]
 [ext_resource type="Theme" uid="uid://c3bwm7ydbr1al" path="res://UI/UITheme.tres" id="3"]
 [ext_resource type="Texture2D" uid="uid://dj6taqm7fyakb" path="res://Assets/Sprites/Icons/under_progress_repair.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://be17iflh3r3s8" path="res://Assets/Sprites/Icons/progress_repair.png" id="5"]
@@ -35,6 +35,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.36041
 offset_right = -1.36035
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3")
 
 [node name="Panel" type="Panel" parent="Control"]

@@ -105,7 +105,7 @@ texture = ExtResource("2")
 position = Vector2(14.0696, -25.6922)
 texture = ExtResource("3")
 hframes = 9
-frame = 3
+frame = 8
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -113,7 +113,7 @@ position = Vector2(13.3948, -4.23148)
 shape = SubResource("1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(1.4, 1.4)
 limit_left = 0
 limit_top = 0
 limit_right = 2560

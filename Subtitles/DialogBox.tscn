@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://d0eo4m3jxuj0l"]
 
-[ext_resource path="res://UI/UITheme.tres" type="Theme" id=1]
-[ext_resource path="res://Subtitles/Dialog.gd" type="Script" id=2]
+[ext_resource type="Theme" uid="uid://c3bwm7ydbr1al" path="res://UI/UITheme.tres" id="1"]
+[ext_resource type="Script" uid="uid://dl4bt3byiwicu" path="res://Subtitles/Dialog.gd" id="2"]
 
 [node name="DialogBox" type="Polygon2D"]
-color = Color( 0.0313726, 0.027451, 0.0901961, 0.235294 )
-polygon = PackedVector2Array( 192, 576, 192, 688, 1088, 688, 1088, 576 )
+color = Color(0.0313726, 0.027451, 0.0901961, 0.235294)
+polygon = PackedVector2Array(192, 576, 192, 688, 1088, 688, 1088, 576)
 
 [node name="Dialog" type="RichTextLabel" parent="."]
 offset_left = 224.0
 offset_top = 592.0
 offset_right = 1056.0
 offset_bottom = 672.0
-theme = ExtResource( 1 )
+theme = ExtResource("1")
 text = "This is test mode"
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="VisibleCharacters" type="Timer" parent="Dialog"]
 wait_time = 0.05
