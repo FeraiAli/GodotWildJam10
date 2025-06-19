@@ -1,37 +1,16 @@
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
 # Godot-specific ignores
 .import/
 export.cfg
-export_presets.cfg
-*.import
+export_credentials.cfg
 
-# OS-specific ignores
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Godot Mono (C#) - if using C#
-.mono/
-data_*/               # Godot mono temp files
-mono_crash.*
-
-# Godot temporary files
-*.tmp
+# Imported translations (automatically generated from CSV files)
 *.translation
 
-# User/editor-specific config
-godot.editor
-
-# Build artifacts (if exporting)
-*.exe
-*.apk
-*.xcodeproj
-*.pck
-*.zip
-*.tar.gz
-*.bin
-*.dmg
-
-# Backup files
-*.bak
-*.old
-*~ 
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
