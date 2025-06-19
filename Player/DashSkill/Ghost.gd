@@ -6,12 +6,21 @@ var dashTick: float = 0.0
 var dashTotalTime: float = 0.0
 var dashTimer: float = 0.0
 
+@export var dash_enabled: bool = false:
+	set(value):
+		dash_enabled = value
+		var dash = get_parent().get_node("PlayerUI/Control/Panel/HBoxContainer/Dash")
+		dash.value = dash.max_value if value else dash.min_value
+	get:
+		return dash_enabled
+
 const dashCooldown: float = 1.0
 var dashCooldownTimer: float = dashCooldown
 
 var finished: bool = false
 
 func _ready() -> void:
+	dash_enabled = false
 	set_process(false)
 
 func Dash(dashTime: float) -> bool:

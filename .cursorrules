@@ -10,6 +10,7 @@
 - Follow Godot's node naming conventions (PascalCase for nodes, snake_case for methods)
 
 ## MOST IMPORTANT RULE
+- If user explicitly writes you to access tscn, only then you are allowed to skip the rules below.
 - You are allowed to read the whole project but only GD scripts, NO tscn.
 - If directory is specified - You are allowed to change only the specified directory.
 - You are allowed only to change GD scripts, NOT tscn scenes, if there is a fix required in tscn, you must tell the user, instead of modifying the file.

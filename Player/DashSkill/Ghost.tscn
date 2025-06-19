@@ -1,12 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://b34iqh52u0spk"]
 
-[ext_resource path="res://Player/DashSkill/Ghost.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Character/dash.png" type="Texture2D" id=2]
+[ext_resource type="Script" uid="uid://jadiuao5swr4" path="res://Player/DashSkill/Ghost.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dmeh0lyud5baj" path="res://Assets/Sprites/Character/dash.png" id="2"]
 
 [node name="Ghost" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource( 2 )
-
+texture = ExtResource("2")

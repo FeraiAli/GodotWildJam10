@@ -36,7 +36,6 @@ func CanAttack():
 
 func OnTreeEntered():
 	Target = GameManager.GetPlayer()
-	$TimeBeforeGlitch.start()
 	$ProgressToGlitch.show()
 	set_process(false)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0456daaauetd"]
+[gd_scene load_steps=16 format=3 uid="uid://d0456daaauetd"]
 
 [ext_resource type="Script" uid="uid://bqc4btnw1ws2" path="res://Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d036dift3c7bl" path="res://Assets/Sprites/Character/shadow_new.png" id="2"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://it3vyg8dy2nm" path="res://Assets/Sprites/Icons/casting_bgr.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://bh5a77ndenuyc" path="res://Assets/Sprites/Icons/casting_fill.png" id="6"]
 [ext_resource type="AudioStream" uid="uid://dt5ox3bu01mov" path="res://Sounds/player_footsteps.wav" id="7"]
-[ext_resource type="PackedScene" path="res://Player/DashSkill/Ghost.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b34iqh52u0spk" path="res://Player/DashSkill/Ghost.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://tfog372rbrp6" path="res://Game/Leveling/Leveling.tscn" id="9_j23h2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(4, 4)
@@ -147,5 +148,7 @@ volume_db = -15.733
 mix_target = 2
 
 [node name="Ghost" parent="." instance=ExtResource("8")]
+
+[node name="Leveling" parent="." instance=ExtResource("9_j23h2")]
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimFinished"]

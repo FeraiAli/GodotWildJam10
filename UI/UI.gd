@@ -16,7 +16,8 @@ func _process(delta):
 	TimeSinceStart += delta
 	$Control/HBoxContainer/SurvivalTime.text = "SURVIVAL TIME: " + str(round(TimeSinceStart)) + " seconds"
 	$Control/Panel/HBoxContainer/Repair.value = get_parent().RepairTimerCounter
-	$Control/Panel/HBoxContainer/Dash.value = get_parent().DashTimerCounter
+	if get_parent().get_node("Ghost").dash_enabled:
+		$Control/Panel/HBoxContainer/Dash.value = get_parent().DashTimerCounter
 
 func OnRepairUsed():
 	RepairUsedTimes += 1

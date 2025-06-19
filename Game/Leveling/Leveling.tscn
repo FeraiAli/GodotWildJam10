@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://tfog372rbrp6"]
+
+[ext_resource type="Script" uid="uid://c3kvcc0xggkp2" path="res://Game/Leveling/Leveling.gd" id="1_u4r2d"]
+[ext_resource type="Texture2D" uid="uid://dtoo3budf2fvh" path="res://Assets/Fx/Retro Impact Effect Pack 5 A.png" id="2_mxqff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27k8t"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(0, 1150, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btfiv"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(64, 1150, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbodu"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(128, 1150, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5o61"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(192, 1150, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnqy0"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(256, 1150, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imh40"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(320, 1150, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_383ws"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(384, 1150, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18rwk"]
+atlas = ExtResource("2_mxqff")
+region = Rect2(448, 1150, 64, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75yvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_27k8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btfiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbodu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbodu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5o61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnqy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imh40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_383ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18rwk")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Leveling" type="Node2D"]
+script = ExtResource("1_u4r2d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -31)
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_75yvu")

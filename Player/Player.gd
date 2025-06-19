@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		$RepairCasting.show()
 		return
 	
-	if Input.is_action_pressed("player_dash") and DashTimerCounter > 1.3:
+	if $Ghost.dash_enabled and Input.is_action_pressed("player_dash") and DashTimerCounter > 1.3:
 		DashTimerCounter = 0.0
 		$Anim.play("DASH")
 		velocity += (velocity.normalized() * 1000)
