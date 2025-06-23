@@ -24,7 +24,7 @@ var mine_unlocked: bool = true
 var acceleration: Vector2 = Vector2()
 var FixingArea: int = 100
 
-var RepairTimerCounter: float = 1.0
+var RepairTimerCounter: float = 10.0
 var DashTimerCounter: float = 10.0
 var MineTimerCounter: float = 35.0
 
@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("ui_down"):
 		acceleration.y += Speed
 	
-	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 0.2:
+	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 1.0:
 		RepairTimerCounter = 0.0
 		GameManager.emit_signal("OnRepeairBegin")
 		$Anim.play("REPAIRING")
