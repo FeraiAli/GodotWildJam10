@@ -7,12 +7,31 @@ var Solution: String = ""
 
 var Health: int = MaxHealth
 var Stamina: int = MaxStamina
+var can_dash: bool = true
+var mine_unlocked: bool = true
+
+@export var mine_enabled: bool = false:
+	set(value):
+		mine_enabled = value
+		var mine = get_node("PlayerUI/Control/Panel/HBoxContainer/Mine")
+		if value:
+			mine.value = MineTimerCounter
+		else:
+			mine.value = mine.min_value
+	get:
+		return mine_enabled
 
 var acceleration: Vector2 = Vector2()
 var FixingArea: int = 100
 
-var RepairTimerCounter: float = 10.0
+var RepairTimerCounter: float = 1.0
 var DashTimerCounter: float = 10.0
+var MineTimerCounter: float = 35.0
+
+const AttractionMineScene = preload("res://Game/AttractionMine/AttractionMine.tscn")
+var current_mine: Node = null
+var mine_cooldown_time: float = 30.0
+var mine_duration: float = 5.0
 
 func _ready() -> void:
 	if false == GameManager.Config.is_empty():
@@ -24,6 +43,7 @@ func _ready() -> void:
 	GameManager.connect("CameraZoomOut", Callable(self, "CameraZoomOut"))
 	#$Anim.animation_finished.connect(OnAnimFinished)
 	
+	mine_enabled = true
 	Restart()
 
 func _draw() -> void:
@@ -51,6 +71,7 @@ func _physics_process(delta: float) -> void:
 		
 	RepairTimerCounter += delta
 	DashTimerCounter += delta
+	MineTimerCounter += delta
 	
 	if Input.is_action_pressed("ui_right"):
 		acceleration.x += Speed
@@ -61,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("ui_down"):
 		acceleration.y += Speed
 	
-	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 1.0:
+	if Input.is_action_pressed("player_repair") and RepairTimerCounter > 0.2:
 		RepairTimerCounter = 0.0
 		GameManager.emit_signal("OnRepeairBegin")
 		$Anim.play("REPAIRING")
@@ -69,13 +90,17 @@ func _physics_process(delta: float) -> void:
 		$RepairCasting.show()
 		return
 	
-	if $Ghost.dash_enabled and Input.is_action_pressed("player_dash") and DashTimerCounter > 1.3:
+	if can_dash and Input.is_action_pressed("player_dash") and DashTimerCounter > 1.3:
 		DashTimerCounter = 0.0
 		$Anim.play("DASH")
 		velocity += (velocity.normalized() * 1000)
 		$Ghost.Dash(0.2)
 		GameManager.emit_signal("ScreenShake", 0.5, 3, 100)
 		
+	if Input.is_action_pressed("player_mine") and can_place_mine():
+		place_attraction_mine()
+		MineTimerCounter = 0.0
+	
 	if acceleration == Vector2():
 		$Anim.play("IDLE")
 	else:
@@ -113,8 +138,36 @@ func OnAnimFinished(animName: String) -> void:
 				GameManager.emit_signal("OnObjectFixed", r.global_position, point)
 				r.queue_free()
 
+func can_place_mine() -> bool:
+	return mine_unlocked and MineTimerCounter >= (mine_duration + mine_cooldown_time) and current_mine == null
+
+func place_attraction_mine() -> void:
+	var mine = AttractionMineScene.instantiate()
+	mine.global_position = global_position
+	get_parent().add_child(mine)
+	mine.activate()
+	
+	current_mine = mine
+	
+	mine.connect("mine_expired", Callable(self, "on_mine_expired"))
+	
+	GameManager.emit_signal("ScreenShake", 0.3, 2, 50)
+
+func on_mine_expired() -> void:
+	current_mine = null
+	MineTimerCounter = mine_duration
+
+func enable_mine() -> void:
+	mine_unlocked = true
+	mine_enabled = true
+	print("Mine ability unlocked!")
+
 func Restart() -> void:
 	RepairTimerCounter = 10.0
 	DashTimerCounter = 10.0
+	MineTimerCounter = 35.0
+	current_mine = null
+	mine_unlocked = false
+	mine_enabled = false
 	$Anim.play("IDLE")
 	$RepairCasting.hide()

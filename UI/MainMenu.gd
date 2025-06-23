@@ -11,7 +11,7 @@ func OnEasyPressed() -> void:
 		"GlitchHappenChance": 0.0, 
 		"GlitchIncreaseFactor": 0.05,
 		"BeesCount": 10,
-		"RabbitsCount": 20,
+		"RabbitsCount": 15,
 		"FlowerCount": 60,
 		"PointMultiplier": 1.0 
 	}

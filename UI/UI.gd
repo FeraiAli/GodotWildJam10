@@ -19,6 +19,11 @@ func _process(delta):
 	if get_parent().get_node("Ghost").dash_enabled:
 		$Control/Panel/HBoxContainer/Dash.value = get_parent().DashTimerCounter
 
+	if get_parent().mine_unlocked:
+		var mine_total_time = get_parent().mine_duration + get_parent().mine_cooldown_time  # 35 seconds total
+		$Control/Panel/HBoxContainer/Mine.max_value = mine_total_time
+		$Control/Panel/HBoxContainer/Mine.value = get_parent().MineTimerCounter
+
 func OnRepairUsed():
 	RepairUsedTimes += 1
 	

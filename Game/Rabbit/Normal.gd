@@ -6,6 +6,7 @@ var Velocity = Vector2()
 var InitialPosition = Vector2()
 var JumpCounter = 0.0
 var JumpDelay = 1
+var attraction_force = Vector2()
 
 func _ready():
 	randomize()
@@ -27,6 +28,10 @@ func _process(delta):
 		var direction = Vector2(cos(radian), sin(radian))
 		Acceleration += direction.normalized()
 
+	# Apply attraction force from mines
+	Acceleration += attraction_force
+	attraction_force = Vector2()  # Reset after applying
+
 	Velocity += (Acceleration * Speed)
 	Acceleration = Vector2()
 	Velocity = Velocity.limit_length(Speed)
@@ -40,3 +45,6 @@ func _process(delta):
 	Velocity *= 0.8
 	if Velocity.x < 1.0 and Velocity.y < 1.0:
 		Velocity = Vector2()
+
+func apply_attraction(force: Vector2) -> void:
+	attraction_force += force

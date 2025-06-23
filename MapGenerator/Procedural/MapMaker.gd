@@ -78,7 +78,7 @@ func GetTileByNoise(sample):
 		return 0
 
 func ShouldPlaceTree(sample):
-	return sample < -0.2
+	return 0 #sample < -0.2
 
 func GetTileMapSize():
 	return _TileMapSize

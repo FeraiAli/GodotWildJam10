@@ -52,7 +52,7 @@ position = Vector2(-9.05892, -28.7944)
 texture = ExtResource("2")
 centered = false
 hframes = 8
-frame = 6
+frame = 4
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {

@@ -14,6 +14,8 @@ extends Node2D
 var AttackCounter: float = 0.0
 var AttackDelayCounter: float = 0.0
 var Target: Node2D = null
+var attraction_force = Vector2()
+var is_attracted_to_mine: bool = false
 
 func _ready() -> void:
 	randomize()
@@ -21,7 +23,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	AttackCounter += delta
 	
-	if IsInAttackRange():
+	# Check if being attracted to mine
+	is_attracted_to_mine = attraction_force.length() > 0
+	
+	if is_attracted_to_mine:
+		# If attracted to mine, move toward mine instead of player
+		MoveTowardMine(delta)
+	elif IsInAttackRange():
 		if CanAttack():
 			AttackDelayCounter += delta
 			if AttackDelayCounter >= 0.3:
@@ -32,6 +40,8 @@ func _process(delta: float) -> void:
 		MoveTowardTarget(delta)
 
 func IsInAttackRange() -> bool:
+	if is_attracted_to_mine:
+		return false  # Don't attack when attracted to mine
 	return get_parent().position.distance_to(GetTargetPosition()) <= AttackRadius
 	
 func CanAttack() -> bool:
@@ -44,6 +54,16 @@ func Attack() -> void:
 
 func Wait() -> void:
 	pass
+
+func MoveTowardMine(delta: float) -> void:
+	# Move directly toward mine using attraction force
+	var velocity = attraction_force.normalized() * Speed * 2  # Faster when attracted
+	get_parent().set_velocity(velocity)
+	get_parent().move_and_slide()
+	get_parent().velocity
+	
+	# Reset attraction force after applying
+	attraction_force = Vector2()
 
 func MoveTowardTarget(delta: float) -> void:
 	var direction = GetTargetPosition() - get_parent().position
@@ -60,3 +80,6 @@ func OnTreeEntered() -> void:
 	get_parent().get_node("Anim").speed_scale = 3.0
 	get_parent().get_node("Anim").speed_scale = randf() * 2.0 + 1.0
 	Target = GameManager.GetPlayer()
+
+func apply_attraction(force: Vector2) -> void:
+	attraction_force += force

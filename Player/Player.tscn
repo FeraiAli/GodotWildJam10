@@ -43,6 +43,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="4"]
+length = 0.1
 step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -106,7 +107,7 @@ texture = ExtResource("2")
 position = Vector2(14.0696, -25.6922)
 texture = ExtResource("3")
 hframes = 9
-frame = 8
+frame = 5
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
